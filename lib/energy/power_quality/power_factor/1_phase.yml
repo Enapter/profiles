@@ -1,0 +1,25 @@
+blueprint_spec: profile/1.0
+
+display_name: Single-Phase Power Factor Measurement
+description: This profile provides power factor telemetry for a single-phase system.
+
+telemetry:
+  ac_l1_power_apparent:
+    display_name: Apparent Power
+    type: float
+    unit: VA
+    description: Apparent power (S).
+
+  ac_l1_power_reactive:
+    display_name: Reactive Power
+    type: float
+    unit: VAR
+    description: Reactive power (Q).
+
+  ac_l1_power_factor:
+    display_name: Power Factor
+    type: float
+    description: |
+      Ratio of active power to apparent power, range from -1 to 1.
+      Positive values indicate lagging (inductive) power factor.
+      Negative values indicate leading (capacitive) power factor.

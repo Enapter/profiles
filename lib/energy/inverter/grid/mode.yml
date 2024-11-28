@@ -1,0 +1,15 @@
+blueprint_spec: profile/1.0
+
+display_name: Grid Connection Mode
+
+properties:
+  grid_mode:
+    display_name: Grid Mode
+    type: string
+    enum:
+      grid_tied:
+        display_name: Grid-tied
+        description: Inverter is configured to operate in grid-tied mode.
+      off_grid:
+        display_name: Off-grid
+        description: Inverter is configured to operate off-grid (grid-forming mode).

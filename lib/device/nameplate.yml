@@ -1,0 +1,20 @@
+blueprint_spec: profile/1.0
+
+display_name: Device Nameplate
+description: Includes typical nameplate information like vendor, model, and serial number.
+
+properties:
+  vendor:
+    display_name: Vendor
+    type: string
+    description: Manufacturer of the device.
+
+  model:
+    display_name: Model
+    type: string
+    description: Model name/number.
+
+  serial_number:
+    display_name: Serial Number
+    type: string
+    description: Unique serial number of the device.

@@ -1,0 +1,23 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery Charge/Discharge Limits
+description: Defines the current limits for battery charging and discharging operations.
+
+telemetry:
+  # XXX: A vs W
+  # NOTE: Some devices may report this in power (W) instead of current (A).
+  # The integration should convert between units if necessary using the formula I = P / V.
+  # where I is current in amperes, P is power in watts, and V is voltage in volts.
+  # One can either use the battery nominal voltage or the actual voltage to convert
+  # between power and current.
+  battery_max_charge_current:
+    display_name: Maximum Charge Current
+    type: float
+    unit: A
+    description: Maximum allowed charging current.
+
+  battery_max_discharge_current:
+    display_name: Maximum Discharge Current
+    type: float
+    unit: A
+    description: Maximum allowed discharging current.

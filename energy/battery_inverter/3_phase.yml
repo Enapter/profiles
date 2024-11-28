@@ -1,0 +1,17 @@
+blueprint_spec: profile/1.0
+
+display_name: Three-Phase Battery Inverter
+description: A three-phase battery inverter profile combining all relevant capabilities
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.battery.electrical
+  - lib.energy.battery.nameplate
+  - lib.energy.battery.soc
+  - lib.energy.inverter.ac.3_phase
+  - lib.energy.inverter.ac.power
+  - lib.energy.inverter.grid.power
+  - lib.energy.inverter.load.power
+  - lib.energy.inverter.nameplate
+  - lib.energy.inverter.status
+  - lib.firmware.version

@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Inverter Energy Statistics - Today
+
+telemetry:
+  ac_energy_today:
+    display_name: AC Energy Produced Today
+    type: float
+    unit: Wh
+    description: Total energy produced (converted from DC to AC) since the start of the day.

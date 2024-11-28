@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery/BMS Profile
+description: A profile for battery and battery management systems
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.battery.electrical
+  - lib.energy.battery.nameplate
+  - lib.energy.battery.soc
+  - lib.firmware.version

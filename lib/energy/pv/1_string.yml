@@ -1,0 +1,23 @@
+blueprint_spec: profile/1.0
+
+display_name: 1-String PV Generation
+description: Measurements for PV inverters/charge controllers with one MPPT string.
+
+telemetry:
+  pv_s1_voltage:
+    display_name: PV String 1 Voltage
+    type: float
+    unit: V
+    description: DC voltage of the solar panel string 1.
+
+  pv_s1_current:
+    display_name: PV String 1 Current
+    type: float
+    unit: A
+    description: DC current of the solar panel string 1.
+
+  pv_s1_power:
+    display_name: PV String 1 Power
+    type: float
+    unit: W
+    description: DC power of the solar panel string 1.

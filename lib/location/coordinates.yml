@@ -1,0 +1,14 @@
+blueprint_spec: profile/1.0
+
+display_name: Location Coordinates Profile
+
+properties:
+  latitude:
+    display_name: Latitude
+    type: float
+    description: Latitude coordinate in decimal degrees
+
+  longitude:
+    display_name: Longitude
+    type: float
+    description: Longitude coordinate in decimal degrees

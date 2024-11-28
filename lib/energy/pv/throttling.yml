@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: PV Throttling
+description: PV throttling capability defines when the PV system is operating at reduced power output, e.g. due to high temperature.
+
+telemetry:
+  pv_throttled:
+    display_name: PV Throttled
+    type: boolean
+    description: Whether the PV system is operating at reduced power output, e.g. due to high temperature.

@@ -1,0 +1,38 @@
+blueprint_spec: profile/1.0
+
+display_name: Inverter Status Profile
+description: Status profile for battery/solar/hybrid inverters
+
+telemetry:
+  # XXX: status - keep status?, e.g. warning
+  status:
+    display_name: Status
+    type: string
+    description: Current operational status of the inverter
+    enum:
+      "off":
+        display_name: "Off"
+        description: Inverter is switched off
+      standby:
+        display_name: Standby
+        description: |
+          Inverter is in standby mode waiting for startup conditions.
+          Examples:
+          - AC grid voltage unavailable for grid-tied inverters
+          - DC voltage too low (night time for PV inverters)
+          - External control signal forcing standby
+      starting:
+        display_name: Starting
+        description: Inverter is going through startup procedure
+      operating:
+        display_name: Operating
+        description: Inverter is actively producing power
+      shutting_down:
+        display_name: Shutting Down
+        description: Inverter is going through shutdown procedure
+      fault:
+        display_name: Fault
+        description: Inverter has detected a fault and is not operating
+      warning:
+        display_name: Warning
+        description: Inverter is operating but has detected a condition that requires attention

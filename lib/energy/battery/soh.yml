@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery State of Health
+description: Implements the state of health for a battery.
+
+telemetry:
+  battery_soh:
+    display_name: State of Health
+    type: float
+    unit: "%"
+    description: Battery state of health percentage.

@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Total AC Power
+description: Total AC power measurement across all phases.
+
+telemetry:
+  ac_total_power:
+    display_name: AC Power
+    type: float
+    unit: W
+    description: Total AC power across all phases. Positive values indicate power being delivered to loads/grid, negative values indicate power being consumed, e.g. for charging batteries.

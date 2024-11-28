@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Inverter Energy Statistics - Total
+
+telemetry:
+  ac_energy_total:
+    display_name: Total AC Energy Produced
+    type: float
+    unit: Wh
+    description: Cumulative energy produced (converted from DC to AC) since installation.

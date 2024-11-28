@@ -1,0 +1,15 @@
+blueprint_spec: profile/1.0
+
+display_name: Grid Charging/Feed-in Configutaion Status
+description: Information about grid charging/feeding-in configuration status.
+
+properties:
+  grid_charge_enabled:
+    display_name: Grid Charging Enabled
+    type: boolean
+    description: Whether charging from grid is enabled.
+
+  grid_feed_in_enabled:
+    display_name: Grid Feed-in Enabled
+    type: boolean
+    description: Whether feeding energy to grid is enabled.

@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Three-Phase PV Inverter
+description: A three-phase PV inverter profile combining all relevant capabilities
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.inverter.ac.3_phase
+  - lib.energy.inverter.ac.power
+  - lib.energy.inverter.nameplate
+  - lib.energy.inverter.status
+  - lib.energy.pv.power
+  - lib.firmware.version

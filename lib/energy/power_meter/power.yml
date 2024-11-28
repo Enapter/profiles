@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Power Measurement
+description: Provides total power measurement for a power meter.
+
+telemetry:
+  total_power:
+    display_name: Total Power
+    type: float
+    unit: W
+    description: Total power across all connected loads. Positive values typically corresponds to power being consumed by loads.

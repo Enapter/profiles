@@ -1,0 +1,18 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery Energy Statistics
+description: Cumulative energy statistics for batteries.
+
+telemetry:
+  # XXX: Wh vs Ah
+  battery_charged_energy_total:
+    display_name: Total Energy Charged
+    type: float
+    unit: Wh
+    description: Cumulative energy charged to batteries since installation.
+
+  battery_discharged_energy_total:
+    display_name: Total Energy Discharged
+    type: float
+    unit: Wh
+    description: Cumulative energy discharged from batteries since installation.

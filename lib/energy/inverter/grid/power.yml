@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Grid Power
+
+telemetry:
+  grid_total_power:
+    display_name: Grid Power
+    type: float
+    unit: W
+    description: Power exchange with grid (positive for import, negative for export).

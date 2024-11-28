@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Total PV Current
+description: Total PV current measurement across all strings.
+
+telemetry:
+  pv_total_current:
+    display_name: PV Current
+    type: float
+    unit: A
+    description: Total DC current flow from all PV strings.

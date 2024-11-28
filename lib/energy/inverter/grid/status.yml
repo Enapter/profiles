@@ -1,0 +1,18 @@
+blueprint_spec: profile/1.0
+
+display_name: Grid Connection Status
+
+telemetry:
+  grid_status:
+    display_name: Grid Connection Status
+    type: string
+    enum:
+      disconnected:
+        display_name: Disconnected
+        description: Grid is actively disconnected due to intentional island/off-grid mode.
+      connected:
+        display_name: Connected
+        description: Operating in grid-connected mode, grid connection is active.
+      fault:
+        display_name: Fault
+        description: Grid parameters out of specified range (voltage, frequency, etc.), grid connection is temporarily disabled.

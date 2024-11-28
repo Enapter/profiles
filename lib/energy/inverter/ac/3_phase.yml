@@ -1,0 +1,68 @@
+blueprint_spec: profile/1.0
+
+display_name: Three Phase Inverter
+description: Provides AC measurements for a three-phase inverter.
+
+telemetry:
+  ac_frequency:
+    display_name: AC Frequency
+    type: float
+    unit: Hz
+    description: AC grid frequency.
+
+  # Phase L1
+  ac_l1_voltage:
+    display_name: L1 Voltage
+    type: float
+    unit: V
+    description: Voltage on phase L1 to neutral.
+
+  ac_l1_current:
+    display_name: L1 Current
+    type: float
+    unit: A
+    description: Current on phase L1.
+
+  ac_l1_power:
+    display_name: L1 Power
+    type: float
+    unit: W
+    description: Power on phase L1.
+
+  # Phase L2
+  ac_l2_voltage:
+    display_name: L2 Voltage
+    type: float
+    unit: V
+    description: Voltage on phase L2 to neutral.
+
+  ac_l2_current:
+    display_name: L2 Current
+    type: float
+    unit: A
+    description: Current on phase L2.
+
+  ac_l2_power:
+    display_name: L2 Power
+    type: float
+    unit: W
+    description: Power on phase L2.
+
+  # Phase L3
+  ac_l3_voltage:
+    display_name: L3 Voltage
+    type: float
+    unit: V
+    description: Voltage on phase L3 to neutral.
+
+  ac_l3_current:
+    display_name: L3 Current
+    type: float
+    unit: A
+    description: Current on phase L3.
+
+  ac_l3_power:
+    display_name: L3 Power
+    type: float
+    unit: W
+    description: Power on phase L3.

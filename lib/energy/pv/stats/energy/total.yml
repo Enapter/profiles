@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: PV Energy Statistics - Total
+
+telemetry:
+  pv_energy_total:
+    display_name: Total PV Energy Produced
+    type: float
+    unit: Wh
+    description: Cumulative energy produced by all PV strings since commissioning.

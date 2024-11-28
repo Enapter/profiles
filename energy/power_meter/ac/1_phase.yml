@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Single-Phase Power Meter
+description: A single-phase power meter profile
+
+implements:
+  - lib.device.nameplate
+  - lib.firmware.version
+  - lib.energy.power_meter.ac.1_phase
+  - lib.energy.power_meter.energy.total
+  - lib.energy.power_meter.power

@@ -1,0 +1,68 @@
+blueprint_spec: profile/1.0
+
+display_name: Three-Phase Power Factor Measurement
+description: This profile provides power factor telemetry for each phase of a three-phase system.
+
+telemetry:
+  # Phase L1
+  ac_l1_power_apparent:
+    display_name: L1 Apparent Power
+    type: float
+    unit: VA
+    description: Apparent power (S) on phase L1.
+
+  ac_l1_power_reactive:
+    display_name: L1 Reactive Power
+    type: float
+    unit: VAR
+    description: Reactive power (Q) on phase L1.
+
+  ac_l1_power_factor:
+    display_name: L1 Power Factor
+    type: float
+    description: |
+      Ratio of L1 active power to L1 apparent power, range from -1 to 1.
+      Positive values indicate lagging (inductive) power factor.
+      Negative values indicate leading (capacitive) power factor.
+
+  # Phase L2
+  ac_l2_power_apparent:
+    display_name: L2 Apparent Power
+    type: float
+    unit: VA
+    description: Apparent power (S) on phase L2.
+
+  ac_l2_power_reactive:
+    display_name: L2 Reactive Power
+    type: float
+    unit: VAR
+    description: Reactive power (Q) on phase L2.
+
+  ac_l2_power_factor:
+    display_name: L2 Power Factor
+    type: float
+    description: |
+      Ratio of L2 active power to L2 apparent power, range from -1 to 1.
+      Positive values indicate lagging (inductive) power factor.
+      Negative values indicate leading (capacitive) power factor.
+
+  # Phase L3
+  ac_l3_power_apparent:
+    display_name: L3 Apparent Power
+    type: float
+    unit: VA
+    description: Apparent power (S) on phase L3.
+
+  ac_l3_power_reactive:
+    display_name: L3 Reactive Power
+    type: float
+    unit: VAR
+    description: Reactive power (Q) on phase L3.
+
+  ac_l3_power_factor:
+    display_name: L3 Power Factor
+    type: float
+    description: |
+      Ratio of L3 active power to L3 apparent power, range from -1 to 1.
+      Positive values indicate lagging (inductive) power factor.
+      Negative values indicate leading (capacitive) power factor.

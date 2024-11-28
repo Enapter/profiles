@@ -1,0 +1,30 @@
+blueprint_spec: profile/1.0
+
+display_name: Power Factor
+description: |
+  Power factor is the ratio of total active power to total apparent power.
+  This profile is applicable to both single-phase and three-phase systems and is intended
+  to be used with inverters, power meters, or other similar devices.
+  In a single-phase system, the power factor is the ratio of active power to apparent power.
+  In a three-phase system, the power factor is the ratio of total active power to total apparent power.
+
+telemetry:
+  ac_power_factor:
+    display_name: Power Factor
+    type: float
+    description: |
+      Ratio of total active power to total apparent power (Ptotal/Stotal), range from -1 to 1
+      Positive values indicate lagging (inductive) power factor.
+      Negative values indicate leading (capacitive) power factor.
+
+  ac_total_power_apparent:
+    display_name: Total Apparent Power
+    type: float
+    unit: VA
+    description: Total apparent power (S) - vector sum of active and reactive power across all phases
+
+  ac_total_power_reactive:
+    display_name: Total Reactive Power
+    type: float
+    unit: VAR
+    description: Total reactive power (Q) across all phases - power that returns to the source in each cycle

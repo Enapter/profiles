@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Energy Statistics Profile - Total
+
+telemetry:
+  energy_total:
+    display_name: Total Energy Consumed
+    type: float
+    unit: Wh
+    description: Cumulative energy consumed by loads since installation.

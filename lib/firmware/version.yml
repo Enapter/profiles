@@ -1,0 +1,9 @@
+blueprint_spec: profile/1.0
+
+display_name: Firmware Version Profile
+
+properties:
+  firmware_version:
+    display_name: Firmware Version
+    type: string
+    description: Version of the device firmware

@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Current Measurement
+description: Provides total current measurement for a power meter.
+
+telemetry:
+  total_current:
+    display_name: Total Current
+    type: float
+    unit: A
+    description: Total current across all connected loads. Positive values typically corresponds to current flowing out to loads.

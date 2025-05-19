@@ -4,7 +4,6 @@ display_name: Inverter Status Profile
 description: Status profile for battery/solar/hybrid inverters
 
 telemetry:
-  # XXX: status - keep status?, e.g. warning
   status:
     display_name: Status
     type: string
@@ -33,6 +32,3 @@ telemetry:
       fault:
         display_name: Fault
         description: Inverter has detected a fault and is not operating
-      warning:
-        display_name: Warning
-        description: Inverter is operating but has detected a condition that requires attention

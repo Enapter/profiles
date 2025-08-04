@@ -14,4 +14,3 @@ implements:
   - lib.energy.inverter.load.power
   - lib.energy.inverter.nameplate
   - lib.energy.inverter.status
-  - lib.firmware.version

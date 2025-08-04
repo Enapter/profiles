@@ -9,4 +9,3 @@ implements:
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc
   - lib.energy.pv.power
-  - lib.firmware.version

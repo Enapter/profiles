@@ -56,7 +56,6 @@ To create a new device implementation for a specific device:
 A hybrid inverter implementation includes:
 
 - Device nameplate information like vendor, model, and serial number
-- Firmware version information
 - Electrical battery management like voltage, current, and power
 - Total inverter power production
 - PV power generation
@@ -69,7 +68,6 @@ description: Hybrid inverter combining PV power generation and battery storage
 
 implements:
   - lib.device.nameplate
-  - lib.firmware.version
   - lib.energy.battery.electrical
   - lib.energy.inverter.total
   - lib.energy.pv.power

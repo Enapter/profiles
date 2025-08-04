@@ -5,7 +5,6 @@ description: A three-phase power meter profile
 
 implements:
   - lib.device.nameplate
-  - lib.firmware.version
   - lib.energy.power_meter.ac.3_phase
   - lib.energy.power_meter.energy.total
   - lib.energy.power_meter.power

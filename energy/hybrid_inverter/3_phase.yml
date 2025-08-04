@@ -15,4 +15,3 @@ implements:
   - lib.energy.inverter.nameplate
   - lib.energy.inverter.status
   - lib.energy.pv.power
-  - lib.firmware.version

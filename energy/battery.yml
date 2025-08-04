@@ -8,4 +8,3 @@ implements:
   - lib.energy.battery.electrical
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc
-  - lib.firmware.version

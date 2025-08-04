@@ -1,11 +1,11 @@
 blueprint_spec: profile/1.0
 
 display_name: Solar Irradiance
-description: Solar irradiance measurement capability.
+description: Indicates the ability to measure solar irradiance.
 
 telemetry:
   solar_irradiance:
     display_name: Solar Irradiance
     type: float
     unit: W/m2
-    description: Solar irradiance at the PV panel location.
+    description: The amount of solar power received per unit area.

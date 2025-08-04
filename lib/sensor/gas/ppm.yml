@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Gas Concentration in ppm
+
+telemetry:
+  gas_ppm:
+    display_name: Gas Parts Per Million (ppm)
+    type: float
+    unit: '[ppm]'
+    description: Gas concentration in parts per million (ppm). This indicates the amount of gas present in the air, where 1 ppm means one part of gas per million parts of air.

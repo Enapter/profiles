@@ -1,0 +1,8 @@
+blueprint_spec: profile/1.0
+
+display_name: Ambient Temperature Profile
+description: A profile for devices that can measure ambient temperature.
+
+implements:
+  - lib.device.nameplate
+  - lib.sensor.temperature.ambient

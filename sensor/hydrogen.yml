@@ -1,0 +1,8 @@
+blueprint_spec: profile/1.0
+
+display_name: Hydrogen Concentration Sensor Profile
+description: A profile for hydrogen concentration and safety sensors.
+
+implements:
+  - lib.device.nameplate
+  - lib.sensor.gas.lel

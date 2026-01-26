@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Cooling Control Duty Monitoring
+description: The duty cycle applied fuel cell cooling controllers.
+
+telemetry:
+  cooling_control_duty:
+    display_name: Cooling Control Duty
+    type: float
+    unit: "%"
+    description: Duty cycle applied to coolant pump or fan.

@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Industrial Fuel Cell
+description: A profile for industrial-grade fuel cell modules.
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.fuel_cell.electrical
+  - lib.energy.fuel_cell.status
+  - lib.energy.fuel_cell.temperature.endpoints
+  - lib.energy.fuel_cell.pressure
+  - lib.energy.fuel_cell.cooling_control_duty
+  - lib.energy.fuel_cell.statistics

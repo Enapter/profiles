@@ -1,0 +1,23 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Electrical Measurements
+description: Voltage, current, and power measurements for fuel cell modules.
+
+telemetry:
+  output_voltage:
+    display_name: Output Voltage
+    type: float
+    unit: V
+    description: Current DC voltage output of the fuel cell.
+
+  output_current:
+    display_name: Output Current
+    type: float
+    unit: A
+    description: Current DC current output of the fuel cell.
+
+  output_power:
+    display_name: Output Power
+    type: float
+    unit: W
+    description: Current DC power output of the fuel cell.

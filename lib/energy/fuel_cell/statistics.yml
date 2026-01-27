@@ -1,0 +1,17 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Diagnostics
+description: Runtime diagnostics, fault monitoring, and service metrics for industrial fuel cell modules.
+
+telemetry:
+  run_hours:
+    display_name: Run Hours
+    type: float
+    unit: s
+    description: Cumulative operating time of the fuel cell.
+
+  total_run_energy:
+    display_name: Total Run Energy
+    type: float
+    unit: J
+    description: Cumulative energy produced by the fuel cell.

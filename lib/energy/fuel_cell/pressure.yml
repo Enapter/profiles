@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Pressure Monitoring
+description: Pressure measurements for fuel cell hydrogen supply.
+
+telemetry:
+  hydrogen_inlet_pressure:
+    display_name: Hydrogen inlet pressure
+    type: float
+    unit: mbar
+    description: Current pressure at the fuel cell anode (hydrogen inlet).

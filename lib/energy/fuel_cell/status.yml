@@ -1,0 +1,10 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Status
+description: Operating status for fuel cell modules.
+
+telemetry:
+  status:
+    display_name: Status
+    type: string
+    description: Current operational status of the fuel cell

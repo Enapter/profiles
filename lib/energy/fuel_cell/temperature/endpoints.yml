@@ -1,0 +1,17 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Thermal Monitoring
+description: Temperature measurements for fuel cell inlet and outlet.
+
+telemetry:
+  inlet_temperature:
+    display_name: Inlet Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the reactant at the fuel cell inlet.
+
+  outlet_temperature:
+    display_name: Outlet Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the reactant at the fuel cell outlet.

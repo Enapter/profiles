@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Coolant Temperature
+description: Temperature measurement for fuel cell coolant.
+
+telemetry:
+  coolant_temperature:
+    display_name: Coolant Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the coolant at the fuel cell.

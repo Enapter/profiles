@@ -26,6 +26,34 @@ Profiles are used in Enapter Blueprints to specify the capabilities and the inte
 2. **Extend with Components**: Add additional library components to the device blueprint if needed.
 3. **Submit a Proposal**: If a profile for your device doesn't exist, create a new one and submit a pull request.
 
+## Conventions
+
+### Sign Conventions
+
+All power and current measurements follow the **generator reference frame** (positive = energy flowing out of the device into the system):
+
+| Measurement Point | Positive Value | Negative Value |
+|---|---|---|
+| Battery current/power | Discharging (energy out) | Charging (energy in) |
+| Inverter AC power | Delivering to loads/grid | Consuming (e.g. standby) |
+| Grid power | Importing from grid | Exporting to grid |
+| Load power | Consumed by loads | Fed back |
+| PV power | Always positive (generation) | N/A |
+
+This convention ensures consistent energy balance calculations: `pv_power + battery_power + grid_power = load_power` (signs will balance naturally).
+
+### Naming Conventions
+
+- All field names use `snake_case`
+- Battery fields use `battery_` prefix
+- Inverter AC fields use `ac_` prefix (DC side is either battery or PV and has its own prefix)
+- PV fields use `pv_` prefix with `s1`/`s2`/etc. for individual strings
+- Grid fields use `grid_` prefix
+- Load fields use `load_` prefix
+- Power meter total fields (`total_power`, `total_current`, `energy_total`) omit the `ac_` prefix because power meters only measure one type of current, so the prefix is redundant. Per-phase fields keep the `ac_` prefix since they follow the same naming as inverter per-phase measurements.
+- Three-phase measurements use `l1`/`l2`/`l3` suffixes (IEC convention)
+- Units follow [UCUM](https://ucum.org/) notation: `W`, `Wh`, `V`, `A`, `Hz`, `VA`, `VAR`, `Cel`, `%`
+
 ## Development
 
 ### Device Profile

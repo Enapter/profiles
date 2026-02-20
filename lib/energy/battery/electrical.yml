@@ -14,10 +14,10 @@ telemetry:
     display_name: Battery Current
     type: float
     unit: A
-    description: Current DC current flow to/from the battery bank (positive for charge, negative for discharge).
+    description: DC current flow to/from the battery bank. Positive values indicate discharging (current flowing out of battery), negative values indicate charging (current flowing into battery).
 
   battery_power:
     display_name: Battery Power
     type: float
     unit: W
-    description: Current DC power (positive for discharge, negative for charge).
+    description: DC power to/from the battery bank. Positive values indicate discharging (power delivered to system), negative values indicate charging (power absorbed from system).

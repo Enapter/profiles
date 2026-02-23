@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Single-Phase Hybrid Inverter
-description: A single-phase hybrid inverter profile combining battery and PV capabilities
+description: A profile for single-phase hybrid inverters with integrated PV input and battery management. Covers PV input power, battery state of charge and power, AC output measurements, grid and load power, operational status, and nameplate attributes.
 
 implements:
   - lib.device.nameplate

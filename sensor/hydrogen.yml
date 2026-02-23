@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Hydrogen Concentration Sensor Profile
-description: A profile for hydrogen concentration and safety sensors.
+description: A profile for hydrogen gas detectors. Reports gas concentration as a percentage of the Lower Explosive Limit (%LEL).
 
 implements:
   - lib.device.nameplate

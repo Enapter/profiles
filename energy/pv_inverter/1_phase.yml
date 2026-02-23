@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Single-Phase PV Inverter
-description: A single-phase PV inverter profile combining all relevant capabilities
+description: A profile for single-phase grid-tied PV inverters. Covers PV input power, AC output voltage/current/power, total AC power, operational status, and nameplate capacity.
 
 implements:
   - lib.device.nameplate

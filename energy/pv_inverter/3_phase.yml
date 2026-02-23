@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Three-Phase PV Inverter
-description: A three-phase PV inverter profile combining all relevant capabilities
+description: A profile for three-phase grid-tied PV inverters. Covers PV input power, per-phase and total AC output power, operational status, and nameplate capacity.
 
 implements:
   - lib.device.nameplate

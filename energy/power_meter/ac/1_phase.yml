@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Single-Phase Power Meter
-description: A single-phase power meter profile
+description: A profile for single-phase AC power meters. Covers voltage, current, power, and cumulative energy consumption.
 
 implements:
   - lib.device.nameplate

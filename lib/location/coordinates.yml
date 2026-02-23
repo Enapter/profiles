@@ -1,14 +1,16 @@
 blueprint_spec: profile/1.0
 
-display_name: Location Coordinates Profile
+display_name: Location Coordinates
 
 properties:
   latitude:
     display_name: Latitude
     type: float
+    unit: deg
     description: Latitude coordinate in decimal degrees
 
   longitude:
     display_name: Longitude
     type: float
+    unit: deg
     description: Longitude coordinate in decimal degrees

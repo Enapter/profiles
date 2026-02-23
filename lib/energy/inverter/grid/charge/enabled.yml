@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Grid Charging/Feed-in Configutaion Status
+display_name: Grid Charging/Feed-in Configuration Status
 description: Information about grid charging/feeding-in configuration status.
 
 properties:

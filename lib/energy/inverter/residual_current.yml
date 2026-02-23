@@ -1,10 +1,10 @@
 blueprint_spec: profile/1.0
 
-display_name: Inverter Residual Current Profile
+display_name: Inverter Residual Current
 
 telemetry:
   residual_current:
     display_name: Residual Current
     type: float
-    unit: A
+    unit: mA
     description: Residual current detected by the inverter.

@@ -1,11 +1,11 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Load Power
-description: Power consumed by local loads on inverter AC output or fed back to grid/battery.
+description: Power consumed by local loads on the inverter AC output.
 
 telemetry:
   load_total_power:
     display_name: Load Power
     type: float
     unit: W
-    description: Total power consumed by local loads on inverter AC output (positive) or fed back to grid/battery (negative).
+    description: Total power consumed by local loads on the inverter AC output. Typically positive; negative values are possible but uncommon when a bidirectional load or generator is connected to the load port.

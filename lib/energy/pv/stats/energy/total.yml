@@ -7,4 +7,4 @@ telemetry:
     display_name: Total PV Energy Produced
     type: float
     unit: Wh
-    description: Cumulative energy produced by all PV strings since commissioning.
+    description: Cumulative energy produced by all PV strings since installation.

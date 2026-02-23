@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Three-Phase Power Meter
-description: A three-phase power meter profile
+description: A profile for three-phase AC power meters. Covers per-phase and total voltage, current, power, and cumulative energy consumption.
 
 implements:
   - lib.device.nameplate

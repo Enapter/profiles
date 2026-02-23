@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Single-Phase Battery Inverter
-description: A single-phase battery inverter profile combining all relevant capabilities
+description: A profile for single-phase battery inverters (off-grid and grid-tied). Covers battery state of charge and charge/discharge power, AC output measurements, grid import/export and load power, operational status, and nameplate attributes.
 
 implements:
   - lib.device.nameplate

@@ -8,7 +8,7 @@ telemetry:
     display_name: AC Frequency
     type: float
     unit: Hz
-    description: AC grid frequency.
+    description: AC output frequency.
 
   ac_l1_power:
     display_name: AC Power

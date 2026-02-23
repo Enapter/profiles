@@ -8,4 +8,4 @@ telemetry:
     display_name: Gas Percent of Lower Explosive Limit (%LEL)
     type: float
     unit: '%LEL'
-    description: Lower explosive limit (LEL) is the lowest concentration of gas that can ignite in air. 100% LEL indicates the concentration of gas is explosive, while 0% LEL indicates no gas is present.
+    description: Gas concentration as a percentage of the Lower Explosive Limit (LEL) - the minimum concentration at which the gas can ignite in air. 0% LEL indicates no gas is present. At 100% LEL the gas has reached the ignition threshold; concentrations above this are within the explosive range up to the Upper Explosive Limit (UEL).

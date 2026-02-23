@@ -13,10 +13,10 @@ The profiles are organized hierarchically to allow for flexible composition base
    - Components are modular and focused on a specific functionality
    - Components can be composed to create complete device profiles
 
-2. **Device Implementations (`/energy`)** - Complete device profiles organized by type:
+2. **Device Implementations (`/energy`, `/sensor`)** - Complete device profiles organized by domain:
    - Each implementation combines multiple library profiles
-   - Implementations are organized by device type
-   - Ready-to-use profiles for common energy devices
+   - Implementations are organized by device type within each domain directory
+   - Ready-to-use profiles for common energy and sensor devices
 
 ## Usage
 

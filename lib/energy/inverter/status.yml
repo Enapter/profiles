@@ -4,7 +4,7 @@ display_name: Inverter Status Profile
 description: Status profile for battery/solar/hybrid inverters
 
 telemetry:
-  status:
+  inverter_status:
     display_name: Status
     type: string
     description: Current operational status of the inverter

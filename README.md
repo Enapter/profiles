@@ -53,6 +53,7 @@ This convention ensures consistent energy balance calculations: `pv_power + batt
 - Power meter total fields (`total_power`, `total_current`, `energy_total`) omit the `ac_` prefix because power meters only measure one type of current, so the prefix is redundant. Per-phase fields keep the `ac_` prefix since they follow the same naming as inverter per-phase measurements.
 - Three-phase measurements use `l1`/`l2`/`l3` suffixes (IEC convention)
 - Units follow [UCUM](https://ucum.org/) notation: `W`, `Wh`, `V`, `A`, `Hz`, `VA`, `VAR`, `Cel`, `%`
+- Status fields must use a context-appropriate prefix instead of the bare `status` name (e.g. `inverter_status`, `charger_status`, `relay_state`). The bare `status` is a reserved field name in the Enapter platform with [special meaning](https://developers.enapter.com/docs/reference/manifest#device-status) and is intentionally left for the Blueprint developer to expose the native device status. Profiles define a separate prefixed field with a unified set of operational states (e.g. `off`, `operating`, `fault`) so that UIs and automation can treat all devices of the same type consistently, while the native status remains available for device-specific diagnostics.
 
 ## Development
 

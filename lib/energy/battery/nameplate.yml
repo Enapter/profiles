@@ -17,127 +17,17 @@ properties:
     description: Main type of the battery system.
     type: string
     enum:
-      # Charging: 3-stage (Bulk/Absorption/Float)
-      # - Bulk: Constant current (0.1-0.2C) until ~80% charge
-      # - Absorption: Constant voltage (14.2-14.4V per 12V) until current drops
-      # - Float: Lower voltage (13.2-13.4V per 12V) maintenance
-      #
-      # Typical cell voltage: 2.0V
-      # System voltages: 12V, 24V, 48V
-      # Charge voltage limits: 2.30-2.45V per cell
-      # Discharge voltage limits: 1.75-1.90V per cell
-      #
-      # Cycle life: 200-300 cycles (to 80% DoD)
-      # Calendar life: 3-5 years
-      # Recommended DoD: 50% max
-      # Self-discharge: 3-20% per month
-      # Temperature range: -20°C to 50°C
-      # Energy density: 30-50 Wh/kg
-      #
-      # Special considerations:
-      # - Requires regular equalization charging
-      # - Temperature compensation required
-      # - Susceptible to sulfation
-      # - Regular watering needed (flooded type)
+      # See .context/battery-types.md for per-type charging parameters and considerations.
       lead_based:
         display_name: Lead-based
-
-      # Charging: 2-stage (CC/CV)
-      # - Constant Current until reaching max voltage
-      # - Constant Voltage until current drops (typically 0.05C)
-      #
-      # Typical cell voltage: 3.2V (LFP), 3.6-3.7V (NMC/NCA)
-      # System voltages: 12V, 24V, 48V, 400V, 800V
-      # Charge voltage limits: 3.65V (LFP), 4.2V (NMC) per cell
-      # Discharge voltage limits: 2.5V-3.0V per cell
-      #
-      # Cycle life: 2000-8000 cycles (to 80% DoD)
-      # Calendar life: 10-20 years
-      # Recommended DoD: 80-90%
-      # Self-discharge: 1-3% per month
-      # Temperature range: 0°C to 45°C
-      # Energy density: 100-265 Wh/kg
-      #
-      # Special considerations:
-      # - Cell balancing required
-      # - Temperature monitoring critical
-      # - No trickle charging
-      # - BMS required for safety
       lithium_based:
         display_name: Lithium-based
-
-      # Charging: Multi-stage with negative delta V detection
-      # - Constant current until -ΔV detection
-      # - Trickle charge for maintenance
-      #
-      # Typical cell voltage: 1.2V
-      # System voltages: 12V, 24V, 48V
-      # Charge voltage: 1.45V per cell
-      # Discharge voltage limit: 1.0V per cell
-      #
-      # Cycle life: NiCd 1500 cycles, NiMH 500-1000 cycles
-      # Calendar life: 5-10 years
-      # Recommended DoD: 80%
-      # Self-discharge: 15-20% per month
-      # Temperature range: -20°C to 45°C
-      # Energy density: 40-80 Wh/kg
-      #
-      # Special considerations:
-      # - Memory effect (especially NiCd)
-      # - Periodic full discharge recommended
-      # - Higher self-discharge rate
-      # - Environmentally hazardous (NiCd)
       nickel_based:
         display_name: Nickel-based
-
-      # Charging: Single-stage
-      # - Constant current charging
-      # - Power proportional to electrolyte flow rate
-      #
-      # Typical cell voltage: 1.4-1.6V
-      # System voltages: Flexible, typically high voltage
-      # Operating voltage range: 1.2-1.6V per cell
-      #
-      # Cycle life: 12000-14000 cycles
-      # Calendar life: 20+ years
-      # Recommended DoD: 100%
-      # Self-discharge: Minimal if electrolytes separated
-      # Temperature range: 10°C to 40°C
-      # Energy density: 20-40 Wh/kg
-      #
-      # Special considerations:
-      # - Separate power/energy scaling
-      # - Pump power consumption
-      # - Regular maintenance of fluid systems
-      # - Temperature management critical
-      # - Electrolyte monitoring required
       flow:
         display_name: Flow
-
-      # Charging: Temperature-dependent charging
-      # - Must maintain high operating temperature
-      # - Constant current followed by constant voltage
-      #
-      # Typical cell voltage: 2.1V
-      # System voltages: Usually high voltage (500V+)
-      # Charge voltage limits: 2.3V per cell
-      # Discharge voltage limits: 1.9V per cell
-      #
-      # Cycle life: 4500+ cycles
-      # Calendar life: 10-15 years
-      # Recommended DoD: 80%
-      # Self-discharge: Dependent on thermal insulation
-      # Temperature range: 300-350°C operating
-      # Energy density: 100-150 Wh/kg
-      #
-      # Special considerations:
-      # - High temperature operation
-      # - Thermal management critical
-      # - Internal heater power consumption
-      # - Extended startup time from cold
       sodium_based:
         display_name: Sodium-based
-
       other:
         display_name: Other
         description: Other battery type, not covered by the standard types.

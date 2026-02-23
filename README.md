@@ -30,17 +30,19 @@ Profiles are used in Enapter Blueprints to specify the capabilities and the inte
 
 ### Sign Conventions
 
-All power and current measurements follow the **generator reference frame** (positive = energy flowing out of the device into the system):
+Power and current signs are defined so that the energy balance `pv_power + battery_power + grid_power = load_power` holds naturally:
 
-| Measurement Point | Positive Value | Negative Value |
+| Measurement Point | Positive (+) | Negative (-) |
 |---|---|---|
-| Battery current/power | Discharging (energy out) | Charging (energy in) |
+| Battery current/power | Discharging | Charging |
 | Inverter AC power | Delivering to loads/grid | Consuming (e.g. standby) |
 | Grid power | Importing from grid | Exporting to grid |
-| Load power | Consumed by loads | Fed back |
-| PV power | Always positive (generation) | N/A |
+| Load power | Consumed by loads | N/A (typically) |
+| PV power | Generating | N/A |
 
-This convention ensures consistent energy balance calculations: `pv_power + battery_power + grid_power = load_power` (signs will balance naturally).
+**Rule of thumb:** if the measurement represents energy being delivered to the system, it is positive. If it represents energy being absorbed, it is negative.
+
+For unidirectional measurements where the direction is clear from context (e.g. `power_consumption` for a device that only consumes), positive values representing the natural physical quantity are acceptable.
 
 ### Naming Conventions
 
@@ -52,7 +54,7 @@ This convention ensures consistent energy balance calculations: `pv_power + batt
 - Load fields use `load_` prefix
 - Power meter total fields (`total_power`, `total_current`, `energy_total`) omit the `ac_` prefix because power meters only measure one type of current, so the prefix is redundant. Per-phase fields keep the `ac_` prefix since they follow the same naming as inverter per-phase measurements.
 - Three-phase measurements use `l1`/`l2`/`l3` suffixes (IEC convention)
-- Units follow [UCUM](https://ucum.org/) notation: `W`, `Wh`, `V`, `A`, `Hz`, `VA`, `VAR`, `Cel`, `%`
+- Units follow [UCUM](https://ucum.org/) notation. See the [units introduction](https://v3.developers.enapter.com/docs/units/introduction) and [frequently used units](https://v3.developers.enapter.com/docs/units/frequently-used) for the full reference.
 - Status fields must use a context-appropriate prefix instead of the bare `status` name (e.g. `inverter_status`, `charger_status`, `relay_state`). The bare `status` is a reserved field name in the Enapter platform with [special meaning](https://developers.enapter.com/docs/reference/manifest#device-status) and is intentionally left for the Blueprint developer to expose the native device status. Profiles define a separate prefixed field with a unified set of operational states (e.g. `off`, `operating`, `fault`) so that UIs and automation can treat all devices of the same type consistently, while the native status remains available for device-specific diagnostics.
 
 ## Development

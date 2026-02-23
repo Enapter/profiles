@@ -26,6 +26,9 @@ telemetry:
       operating:
         display_name: Operating
         description: Inverter is actively producing power
+      throttled:
+        display_name: Throttled
+        description: Inverter is operating at reduced power output due to external conditions such as high temperature, grid requirements, or power limits.
       shutting_down:
         display_name: Shutting Down
         description: Inverter is going through shutdown procedure

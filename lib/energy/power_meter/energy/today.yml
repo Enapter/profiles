@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
-display_name: Energy Statistics Profile - Today
+display_name: Energy Statistics - Today
+description: Energy consumption since the start of the current day.
 
 telemetry:
   energy_today:

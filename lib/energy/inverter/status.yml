@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Inverter Status Profile
+display_name: Inverter Status
 description: Status profile for battery/solar/hybrid inverters
 
 telemetry:

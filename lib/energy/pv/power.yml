@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Total PV Power Profile
+display_name: Total PV Power
 description: Total PV power measurement across all strings.
 
 telemetry:

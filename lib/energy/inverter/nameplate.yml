@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Inverter Nameplate Profile
+display_name: Inverter Nameplate
 description: Nameplate profile for battery/solar/hybrid inverters covering core attributes
 
 properties:

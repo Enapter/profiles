@@ -1,11 +1,11 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Nameplate
-description: Nameplate profile for battery/solar/hybrid inverters covering core attributes
+description: Nameplate attributes for battery, solar, and hybrid inverters.
 
 properties:
   inverter_nameplate_capacity:
     display_name: Nameplate Capacity
     type: integer
     unit: VA
-    description: Maximum power rating of the inverter
+    description: Maximum apparent power rating of the inverter in VA (volt-amperes).

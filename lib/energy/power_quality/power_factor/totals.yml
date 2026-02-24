@@ -12,6 +12,7 @@ telemetry:
   ac_power_factor:
     display_name: Power Factor
     type: float
+    unit: 1
     description: |
       Ratio of total active power to total apparent power (Ptotal/Stotal), range from -1 to 1
       Positive values indicate lagging (inductive) power factor.

@@ -1,0 +1,64 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Status
+description: >-
+  Operational status for electrolyser systems. Uses the standard status
+  framework backbone with electrolyser-specific active status and approved
+  optional statuses for common operational phases.
+
+telemetry:
+  electrolyser_status:
+    display_name: Electrolyser Status
+    type: string
+    description: Current operational status of the electrolyser.
+    enum:
+      idle:
+        display_name: Idle
+        description: >-
+          Powered on and ready to start. No active production or
+          transitional process in progress.
+      starting:
+        display_name: Starting
+        description: >-
+          Startup sequence in progress. May include pressurization,
+          leak checks, and ramp-up phases before hydrogen production begins.
+      producing:
+        display_name: Producing
+        description: Actively producing hydrogen.
+      stopping:
+        display_name: Stopping
+        description: >-
+          Controlled shutdown in progress. May include ramp-down
+          and depressurization phases.
+      standby:
+        display_name: Standby
+        description: >-
+          Production automatically paused due to process conditions
+          such as maximum outlet pressure. Will resume autonomously
+          when conditions allow.
+      fault:
+        display_name: Fault
+        description: >-
+          A condition prevents normal operation. Operator intervention
+          or an automated reset is required before the electrolyser
+          can return to service.
+      maintenance:
+        display_name: Maintenance
+        description: >-
+          Operator-initiated service mode. The electrolyser is intentionally
+          taken out of normal operation for inspection or servicing.
+      purging:
+        display_name: Purging
+        description: >-
+          Performing a gas purge cycle to remove residual gases
+          from the system for safety or process reasons.
+      preheating:
+        display_name: Preheating
+        description: >-
+          Heating the electrolyte or stack to operating temperature
+          before production can begin.
+      keeping_warm:
+        display_name: Keeping Warm
+        description: >-
+          Maintaining electrolyte or stack temperature during an idle
+          period to enable faster restarts.

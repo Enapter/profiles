@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser H2 Outlet Pressure
+description: Hydrogen gas pressure at the electrolyser outlet.
+
+telemetry:
+  h2_outlet_pressure:
+    display_name: H2 Outlet Pressure
+    type: float
+    unit: bar
+    description: >-
+      Hydrogen gas pressure at the electrolyser outlet,
+      measured as gauge pressure relative to atmospheric.

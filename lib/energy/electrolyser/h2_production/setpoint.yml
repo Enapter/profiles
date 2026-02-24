@@ -1,0 +1,25 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser H2 Production Setpoint
+description: >-
+  Production setpoint control for electrolyser systems.
+  Includes the setpoint telemetry and the command to change it.
+
+telemetry:
+  h2_production_setpoint:
+    display_name: H2 Production Setpoint
+    type: float
+    unit: "%"
+    description: Commanded hydrogen production rate as a percentage of nominal capacity.
+
+commands:
+  set_production_rate:
+    display_name: Set Production Rate
+    description: Set the hydrogen production rate as a percentage of nominal capacity.
+    arguments:
+      value:
+        display_name: Production Rate
+        type: float
+        unit: "%"
+        required: true
+        description: Production rate as percentage of nominal capacity (0-100).

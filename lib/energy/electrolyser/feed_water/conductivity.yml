@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Feed Water Conductivity
+description: Feed water conductivity measurement for electrolyser systems.
+
+telemetry:
+  feed_water_conductivity:
+    display_name: Feed Water Conductivity
+    type: float
+    unit: uS/cm
+    description: >-
+      Conductivity of the feed water supply.
+      Lower values indicate higher purity.

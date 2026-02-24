@@ -4,8 +4,18 @@ display_name: Battery Nameplate
 description: Battery nameplate attributes for battery inverters, charge controllers, and battery management systems.
 
 properties:
-  # XXX: Wh vs Ah
-  # NOTE: If the battery system is reporting capacity in Ah, device implementation should convert it to Wh.
+  # NOTE: Proper implementation is strongly recommended.
+  # It is used by lib.energy.battery.charge and lib.energy.battery.limits to convert
+  # Ah -> Wh and A -> W respectively. Leaving it unset breaks those conversions.
+  # Consumers of those profiles should handle the case when this property is not set.
+  battery_nominal_voltage:
+    display_name: Battery Nominal Voltage
+    description: Nominal DC bus voltage of the battery system as specified by the manufacturer. Used to convert between charge (Ah) and energy (Wh) when the device only reports one of the two.
+    type: float
+    unit: V
+
+  # NOTE: If the battery system reports capacity in Ah, convert using:
+  # battery_nameplate_capacity (Wh) = capacity_ah * battery_nominal_voltage
   battery_nameplate_capacity:
     display_name: Battery Nameplate Capacity
     description: Nameplate energy capacity of connected batteries according to manufacturer specifications.
@@ -17,7 +27,6 @@ properties:
     description: Main type of the battery system.
     type: string
     enum:
-      # See .context/battery-types.md for per-type charging parameters and considerations.
       lead_based:
         display_name: Lead-based
       lithium_based:

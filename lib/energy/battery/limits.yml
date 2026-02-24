@@ -1,23 +1,32 @@
 blueprint_spec: profile/1.0
 
-display_name: Battery Charge/Discharge Limits
-description: Defines the current limits for battery charging and discharging operations.
+display_name: Battery Charge/Discharge Power Limits
+description: |
+  Maximum charge and discharge power limits in watts (W), consistent with inverter
+  control, grid codes, and VPP setpoints.
+
+  For devices (typically a BMS) that only report current limits in amperes, convert
+  using battery_nominal_voltage from lib.energy.battery.nameplate:
+
+    battery_max_charge_power (W) = max_charge_current_A * battery_nominal_voltage (V)
+    battery_max_discharge_power (W) = max_discharge_current_A * battery_nominal_voltage (V)
+
+  Use battery_nominal_voltage, not the instantaneous battery_voltage telemetry.
+  battery_voltage fluctuates continuously and would make the limit value noisy even
+  when the BMS has not changed the underlying current limit.
+  Approximation error: ±5% for LFP, ±10-15% for lead-acid.
+
+  Automation: treat these as operational guidance. The BMS enforces the actual limit.
 
 telemetry:
-  # XXX: A vs W
-  # NOTE: Some devices may report this in power (W) instead of current (A).
-  # The integration should convert between units if necessary using the formula I = P / V.
-  # where I is current in amperes, P is power in watts, and V is voltage in volts.
-  # One can either use the battery nominal voltage or the actual voltage to convert
-  # between power and current.
-  battery_max_charge_current:
-    display_name: Maximum Charge Current
+  battery_max_charge_power:
+    display_name: Maximum Charge Power
     type: float
-    unit: A
-    description: Maximum allowed charging current.
+    unit: W
+    description: Maximum allowed charging power as permitted by the battery system.
 
-  battery_max_discharge_current:
-    display_name: Maximum Discharge Current
+  battery_max_discharge_power:
+    display_name: Maximum Discharge Power
     type: float
-    unit: A
-    description: Maximum allowed discharging current.
+    unit: W
+    description: Maximum allowed discharging power as permitted by the battery system.

@@ -1,0 +1,34 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery Cumulative Charge Statistics
+description: |
+  Cumulative charge in Ah. Use for solar charge controllers and BMS devices that meter
+  in ampere-hours natively.
+
+  If the device meters in watt-hours, use lib.energy.battery.energy instead.
+
+  Ah and Wh are not interchangeable: Ah measures charge (coulombs), Wh measures energy
+  (joules). To convert, use battery_nominal_voltage from lib.energy.battery.nameplate:
+
+    battery_charged_energy_total = battery_charge_in_total * battery_nominal_voltage
+    battery_discharged_energy_total = battery_charge_out_total * battery_nominal_voltage
+
+  Approximation error: below 3% for LFP, up to ~12% for lead-acid.
+
+  Automation: prefer lib.energy.battery.energy (Wh) for fleet-wide aggregation. When a
+  device only provides Ah, apply the conversion above and document the assumptions.
+
+  UI: prefer Wh from lib.energy.battery.energy, fall back to Ah.
+
+telemetry:
+  battery_charge_in_total:
+    display_name: Total Charge In
+    type: float
+    unit: Ah
+    description: Cumulative charge transferred into batteries since installation.
+
+  battery_charge_out_total:
+    display_name: Total Charge Out
+    type: float
+    unit: Ah
+    description: Cumulative charge transferred out of batteries since installation.

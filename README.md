@@ -57,6 +57,13 @@ For unidirectional measurements where the direction is clear from context (e.g. 
 - Units follow [UCUM](https://ucum.org/) notation. See the [units introduction](https://v3.developers.enapter.com/docs/units/introduction) and [frequently used units](https://v3.developers.enapter.com/docs/units/frequently-used) for the full reference.
 - Status fields must use a context-appropriate prefix instead of the bare `status` name (e.g. `inverter_status`, `charger_status`, `relay_state`). The bare `status` is a reserved field name in the Enapter platform with [special meaning](https://developers.enapter.com/docs/reference/manifest#device-status) and is intentionally left for the Blueprint developer to expose the native device status. Profiles define a separate prefixed field with a unified set of operational states (e.g. `off`, `operating`, `fault`) so that UIs and automation can treat all devices of the same type consistently, while the native status remains available for device-specific diagnostics.
 
+### Unit Conventions
+
+Some physical quantities appear in different units across device types. There are two ways to handle this, depending on whether the units are interchangeable:
+
+- **Separate profiles per unit**: when units measure different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively; consumers must handle both explicitly. See `lib.energy.battery.energy` (Wh) and `lib.energy.battery.charge` (Ah) as an example.
+- **Single canonical unit with required conversion**: when the same quantity can be meaningfully expressed in either unit and one is clearly more appropriate. Blueprint authors must convert to the canonical unit. See `lib.energy.battery.limits` (W, with a documented formula for devices that only report in A) as an example.
+
 ## Development
 
 ### Device Profile

@@ -8,10 +8,10 @@ properties:
     display_name: Latitude
     type: float
     unit: deg
-    description: Latitude coordinate in decimal degrees
+    description: Latitude coordinate in decimal degrees.
 
   longitude:
     display_name: Longitude
     type: float
     unit: deg
-    description: Longitude coordinate in decimal degrees
+    description: Longitude coordinate in decimal degrees.

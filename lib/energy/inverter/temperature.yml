@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Temperature
-description: Provides temperature measurements for different parts of the inverter
+description: Provides temperature measurements for different parts of the inverter.
 
 telemetry:
   inverter_heatsink_temperature:

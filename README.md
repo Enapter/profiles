@@ -64,6 +64,17 @@ Some physical quantities appear in different units across device types. There ar
 - **Separate profiles per unit**: when units measure different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively; consumers must handle both explicitly. See `lib.energy.battery.energy` (Wh) and `lib.energy.battery.charge` (Ah) as an example.
 - **Single canonical unit with required conversion**: when the same quantity can be meaningfully expressed in either unit and one is clearly more appropriate. Blueprint authors must convert to the canonical unit. See `lib.energy.battery.limits` (W, with a documented formula for devices that only report in A) as an example.
 
+## Versioning
+
+Profiles use **append-only immutability with composition-based extension**:
+
+- **Published profiles are immutable.** Once a profile is published (non-draft), its YAML cannot change. This guarantees that existing Blueprints on deployed Gateways never become invalid.
+- **No field removal.** If a profile needs incompatible changes, create a new profile version (e.g. `energy.battery_v2`) that implements the old one plus new library components.
+- **Field addition via composition.** New capabilities are added by creating new library components and composing them into a new device profile that `implements` the previous version.
+- **Draft mode.** Profiles start as drafts and can be iterated freely. Once promoted to non-draft, they become immutable. A non-draft profile cannot implement a draft profile, preventing unstable dependencies from leaking into production.
+
+In practice, keeping profiles minimal reduces the need for breaking changes. When extension is needed, the composition model allows new profiles to build on existing ones without invalidating older Blueprints.
+
 ## Development
 
 ### Device Profile

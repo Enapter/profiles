@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser H2 Production Lifetime
+description: Cumulative hydrogen production since installation.
+
+telemetry:
+  h2_production_lifetime:
+    display_name: H2 Production Lifetime
+    type: float
+    unit: Nl
+    description: >-
+      Cumulative hydrogen produced since installation at standard
+      conditions. To convert to kg, divide by approximately 11126.

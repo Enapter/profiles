@@ -1,0 +1,19 @@
+blueprint_spec: profile/1.0
+draft: true
+
+display_name: Electrolyser
+description: >-
+  Hydrogen electrolyser with production metrics, control commands,
+  and operational status.
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.electrolyser.status
+  - lib.energy.electrolyser.control
+  - lib.energy.electrolyser.power
+  - lib.energy.electrolyser.outlet_pressure
+  - lib.energy.electrolyser.h2_production.rate
+  - lib.energy.electrolyser.h2_production.lifetime
+  - lib.energy.electrolyser.feed_water.conductivity
+  - lib.energy.electrolyser.feed_water.pressure
+  - lib.energy.electrolyser.feed_water.temperature

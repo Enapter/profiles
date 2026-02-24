@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+draft: true
+
+display_name: Electrolyser Stack
+description: >-
+  Individual electrolyser stack with electrical, temperature,
+  and pressure measurements.
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.electrolyser.stack.electrical
+  - lib.energy.electrolyser.stack.temperature
+  - lib.energy.electrolyser.stack.pressure

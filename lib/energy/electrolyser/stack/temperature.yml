@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Stack Temperature
+description: Temperature measurement for an electrolyser stack.
+
+telemetry:
+  stack_temperature:
+    display_name: Stack Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the electrolyser stack.

@@ -1,0 +1,23 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Stack Electrical
+description: Voltage, current, and power measurements for an electrolyser stack.
+
+telemetry:
+  stack_voltage:
+    display_name: Stack Voltage
+    type: float
+    unit: V
+    description: DC voltage across the electrolyser stack.
+
+  stack_current:
+    display_name: Stack Current
+    type: float
+    unit: A
+    description: DC current through the electrolyser stack.
+
+  stack_power:
+    display_name: Stack Power
+    type: float
+    unit: W
+    description: DC power consumed by the electrolyser stack.

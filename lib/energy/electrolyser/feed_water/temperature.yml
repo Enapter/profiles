@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Feed Water Temperature
+description: Feed water temperature measurement for electrolyser systems.
+
+telemetry:
+  feed_water_temperature:
+    display_name: Feed Water Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the feed water supply at the electrolyser inlet.

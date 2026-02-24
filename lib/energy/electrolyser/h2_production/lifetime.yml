@@ -1,0 +1,23 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser H2 Production Lifetime
+description: >-
+  Cumulative hydrogen production volume and production hours
+  since installation.
+
+telemetry:
+  h2_produced_lifetime:
+    display_name: H2 Produced Lifetime
+    type: float
+    unit: Nl
+    description: >-
+      Cumulative hydrogen produced since installation at standard
+      conditions. To convert to kg, divide by approximately 11126.
+
+  h2_production_hours_lifetime:
+    display_name: H2 Production Hours Lifetime
+    type: float
+    unit: h
+    description: >-
+      Cumulative hours the electrolyser has spent actively
+      producing hydrogen.

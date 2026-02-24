@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Control
+description: Commands for controlling electrolyser hydrogen production.
+
+commands:
+  start:
+    display_name: Start
+    description: Start hydrogen production.
+
+  stop:
+    display_name: Stop
+    description: Stop hydrogen production.

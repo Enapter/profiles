@@ -7,4 +7,4 @@ properties:
   firmware_version:
     display_name: Firmware Version
     type: string
-    description: Version of the device firmware
+    description: Version of the device firmware.

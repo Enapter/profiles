@@ -21,10 +21,10 @@ telemetry:
     display_name: Total Apparent Power
     type: float
     unit: VA
-    description: Total apparent power (S) - vector sum of active and reactive power across all phases
+    description: Total apparent power (S) - vector sum of active and reactive power across all phases.
 
   ac_total_power_reactive:
     display_name: Total Reactive Power
     type: float
     unit: VAR
-    description: Total reactive power (Q) across all phases - power that returns to the source in each cycle
+    description: Total reactive power (Q) across all phases - power that returns to the source in each cycle.

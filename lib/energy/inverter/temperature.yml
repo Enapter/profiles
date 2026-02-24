@@ -1,17 +1,17 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Temperature
-description: Provides temperature measurements for different parts of the inverter
+description: Provides temperature measurements for different parts of the inverter.
 
 telemetry:
   inverter_heatsink_temperature:
     display_name: Heatsink Temperature
     type: float
     unit: Cel
-    description: Temperature of the inverter's heatsink
+    description: Temperature of the inverter's heatsink.
 
   inverter_internal_temperature:
     display_name: Internal Temperature
     type: float
     unit: Cel
-    description: Internal temperature of the inverter
+    description: Internal temperature of the inverter.

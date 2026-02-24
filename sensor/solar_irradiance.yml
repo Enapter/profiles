@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Solar Irradiance Profile
-description: A profile for solar irradiance sensors (pyranometers). Reports irradiance in W/m².
+description: Solar irradiance sensor (pyranometer) reporting irradiance in W/m².
 
 implements:
   - lib.device.nameplate

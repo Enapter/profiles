@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Ambient Temperature Profile
-description: A profile for ambient temperature sensors. Reports air temperature in degrees Celsius.
+description: Ambient temperature sensor reporting air temperature in degrees Celsius.
 
 implements:
   - lib.device.nameplate

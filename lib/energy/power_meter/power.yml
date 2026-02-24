@@ -8,4 +8,4 @@ telemetry:
     display_name: Total Power
     type: float
     unit: W
-    description: Total power across all connected loads. Positive values typically corresponds to power being consumed by loads.
+    description: Total power across all connected loads. Positive values typically correspond to power being consumed by loads.

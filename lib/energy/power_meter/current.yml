@@ -8,4 +8,4 @@ telemetry:
     display_name: Total Current
     type: float
     unit: A
-    description: Total current across all connected loads. Positive values typically corresponds to current flowing out to loads.
+    description: Total current across all connected loads. Positive values typically correspond to current flowing out to loads.

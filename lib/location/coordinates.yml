@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Location Coordinates
+description: Geographic coordinates in decimal degrees.
 
 properties:
   latitude:

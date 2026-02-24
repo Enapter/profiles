@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: PV Energy Statistics - Total
+description: Cumulative PV energy production since installation.
 
 telemetry:
   pv_energy_total:

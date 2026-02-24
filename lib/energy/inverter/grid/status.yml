@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Grid Connection Status
+description: Grid connection state for grid-tied and hybrid inverters.
 
 telemetry:
   grid_status:

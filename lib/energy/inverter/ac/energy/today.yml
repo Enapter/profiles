@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Energy Statistics - Today
+description: AC energy production since the start of the current day.
 
 telemetry:
   ac_energy_today:

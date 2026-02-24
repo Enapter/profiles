@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Residual Current
+description: Residual current monitoring for inverter ground fault detection.
 
 telemetry:
   residual_current:

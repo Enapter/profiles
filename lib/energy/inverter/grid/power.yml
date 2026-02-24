@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Grid Power
+description: Power exchange with the utility grid.
 
 telemetry:
   grid_total_power:

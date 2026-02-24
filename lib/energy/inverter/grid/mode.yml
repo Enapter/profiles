@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Grid Connection Mode
+description: Configured grid connection mode for the inverter.
 
 properties:
   grid_mode:

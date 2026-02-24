@@ -1,6 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: Gas Concentration in ppm
+description: Gas concentration measurement in parts per million.
 
 telemetry:
   gas_ppm:

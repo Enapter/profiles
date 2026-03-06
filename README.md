@@ -1,32 +1,148 @@
 # Enapter Device Profiles
 
-This repository contains modular device profiles for Enapter energy management domain.
+This repository contains device profiles for the Enapter energy management platform.
 
-These profiles are a foundation for building device integrations and aim to provide a common interface for interacting with energy devices via the Enapter platform's various APIs like REST, MQTT, OPC UA, etc. Standardizing device profiles enables device integration with different parts of the Enapter platform and ensures interoperability across different device vendors and models.
+A **profile** is a YAML file that declares the interface of a device for the rest of the platform: telemetry it reports, properties it exposes, and commands it accepts. Profiles do not contain any logic or code. [Enapter Blueprints](https://v3.developers.enapter.com/reference/blueprint/manifest) implement one or more profiles, providing the Lua code that reads from hardware and populates the declared fields.
+
+Standardizing device interfaces through profiles enables integration with different parts of the Enapter platform (REST, MQTT, OPC UA, Rule Engine) and ensures interoperability across different device vendors and models.
+
+## Key Concepts
+
+### Profile References
+
+Blueprints reference Profiles and Profiles reference each other using dot notation. The identifier `lib.energy.battery.soc` maps to the file `lib/energy/battery/soc.yml`. The same convention applies to device profiles: `energy.hybrid_inverter.1_phase` maps to `energy/hybrid_inverter/1_phase.yml`.
+
+### How `implements` Works
+
+When a blueprint or profile lists other profiles in its [`implements`](https://v3.developers.enapter.com/reference/blueprint/manifest#implements) field, it inherits all of their properties, telemetry, and commands. The platform resolves this recursively: if profile A implements B which implements C, then A gets fields from both B and C.
 
 ## Repository Structure
 
-The profiles are organized hierarchically to allow for flexible composition based on device capabilities:
+```
+lib/          Reusable building blocks that define specific capabilities
+energy/       Device profiles for energy devices (inverters, batteries, power meters)
+sensor/       Device profiles for sensor devices (temperature, gas, irradiance)
+guides/       Reference documentation for profile authors
+```
 
-1. **Library Components (`/lib`)** - Reusable building blocks that define specific capabilities:
-   - Each `.yml` file defines a specific capability with properties and/or telemetry points
-   - Components are modular and focused on a specific functionality
-   - Components can be composed to create complete device profiles
+Profiles are organized in two levels:
 
-2. **Device Implementations (`/energy`, `/sensor`)** - Complete device profiles organized by domain:
-   - Each implementation combines multiple library profiles
-   - Implementations are organized by device type within each domain directory
-   - Ready-to-use profiles for common energy and sensor devices
+1. **Library components** (`lib/`) define individual capabilities -- a single measurement, a status field, a nameplate. Each component is small, focused, and reusable across many device types.
 
-## Usage
+2. **Device profiles** (`energy/`, `sensor/`) combine library components into complete device interfaces. A hybrid inverter profile, for example, lists components for battery management, AC output, and PV generation.
 
-Profiles are used in Enapter Blueprints to specify the capabilities and the interface of a device.
+This separation means each capability has a single authoritative definition. Device profiles stay minimal -- they list which components apply without duplicating field definitions.
 
-1. **Select a Profile**: Choose the main device implementation profile that matches the capabilities of your device.
-2. **Extend with Components**: Add additional library components to the device blueprint if needed.
-3. **Submit a Proposal**: If a profile for your device doesn't exist, create a new one and submit a pull request.
+## Using Profiles in Blueprints
+
+1. **Choose a device profile** that matches your device type from the `energy/` or `sensor/` directories.
+2. **Add library components** from `lib/` to your blueprint's `implements` list if the device has capabilities beyond the base profile.
+3. **Implement the fields** in your Blueprint's YAML and Lua code, populating the declared telemetry and properties. For status fields, follow the [Status Framework Guide](guides/status-framework.md) to map vendor statuses to the normalized profile vocabulary.
+
+For the full description of profile fields, see the [Blueprint Manifest Reference](https://v3.developers.enapter.com/reference/blueprint/manifest).
+
+## Creating Profiles
+
+### Device Profiles
+
+To create a new device profile:
+
+1. Identify all the capabilities your device needs.
+2. Find the corresponding library components in `lib/` or create new ones.
+3. Create a YAML file in the appropriate domain directory (e.g. `energy/`).
+
+**Guidelines:**
+
+- Use a descriptive name that reflects the device type.
+- Only include library components relevant to the majority of devices of that type.
+- Avoid vendor-specific or model-specific capabilities in the base profile. If a capability is optional or uncommon, create a separate library component but don't include it in the base profile.
+
+**Example** -- a hybrid inverter combining PV generation, battery management, and AC output:
+
+```yaml
+blueprint_spec: profile/1.0
+
+draft: true
+display_name: Single-Phase Hybrid Inverter
+description: >-
+  A profile for single-phase hybrid inverters with integrated PV input
+  and battery management.
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.battery.electrical
+  - lib.energy.battery.soc
+  - lib.energy.inverter.ac.1_phase
+  - lib.energy.inverter.ac.power
+  - lib.energy.inverter.status
+  - lib.energy.pv.power
+```
+
+### Library Components
+
+To create a new library component:
+
+1. Identify a capability that can be reused across multiple devices.
+2. Create a YAML file in `lib/` following the existing directory hierarchy.
+
+**Guidelines:**
+
+- Follow industry standard terminology (e.g. [SunSpec](https://sunspec.org/) for solar/energy).
+- Each component should serve a single purpose. Avoid overlap with existing components.
+- Include units of measurement for all fields using [UCUM](https://ucum.org/) notation.
+- When a physical quantity can be expressed in different units (e.g. Wh and Ah), follow the guidance in [Unit Conventions](#unit-conventions) and document your choice in the PR description.
+
+**Example** -- battery state of health, a metric not all devices support:
+
+```yaml
+blueprint_spec: profile/1.0
+
+draft: true
+display_name: Battery State of Health
+description: Implements the state of health for a battery.
+
+telemetry:
+  battery_soh:
+    display_name: State of Health
+    type: float
+    unit: "%"
+    description: Battery state of health percentage.
+```
 
 ## Conventions
+
+### Naming Conventions
+
+All field names use `snake_case`. Files and directories also use `snake_case`.
+
+Domain-specific prefixes group related measurements:
+
+| Prefix | Scope |
+|---|---|
+| `ac_` | Inverter AC side (DC side is either battery or PV and has its own prefix) |
+| `battery_` | Battery fields |
+| `pv_` | PV fields, with `s1`/`s2`/etc. for individual strings |
+| `grid_` | Grid fields |
+| `load_` | Load fields |
+
+Three-phase measurements use `l1`/`l2`/`l3` suffixes (IEC convention).
+
+### Status Conventions
+
+Status fields must use a context-appropriate prefix instead of the bare `status` name (e.g. `inverter_status`, `charger_status`, `relay_state`). The bare `status` is a reserved field name in the Enapter platform with [special meaning](https://v3.developers.enapter.com/reference/blueprint/manifest#device-status) and is intentionally left for the Blueprint developer to expose the native device status.
+
+Profiles define a separate prefixed field with a unified set of operational states (e.g. `operating`, `fault`). This lets UIs and automation treat all devices of the same type consistently, while the native status remains available for device-specific diagnostics.
+
+See the [Status Framework Guide](guides/status-framework.md) for the full reference. The framework defines a backbone of seven operational statuses (`idle`, `starting`, `[running]`, `stopping`, `standby`, `fault`, `maintenance`) that apply to any energy device. Each device-type profile extends the backbone with a device-appropriate active status name and optional type-specific values, while blueprints handle the translation from vendor-specific statuses to this normalized vocabulary.
+
+### Unit Conventions
+
+Units follow [UCUM](https://ucum.org/) notation. See the [units introduction](https://v3.developers.enapter.com/docs/units/introduction) and [frequently used units](https://v3.developers.enapter.com/docs/units/frequently-used) for the full reference.
+
+Some physical quantities appear in different units across device types. There are two ways to handle this:
+
+- **Single canonical unit with required conversion** (preferred): when the same quantity can be meaningfully expressed in either unit and one is clearly more appropriate. Blueprint authors must convert to the canonical unit. See `lib.energy.battery.limits` (W, with a documented formula for devices that only report in A) as an example.
+- **Separate profiles per unit**: when units measure fundamentally different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively. See `lib.energy.battery.energy` (Wh) and `lib.energy.battery.charge` (Ah) as an example. Avoid this approach when possible -- it forces every consumer (UI, automation, Rule Engine) to handle both variants, increasing complexity. Use it only when there is a clear technical reason why a single canonical unit would not work.
 
 ### Sign Conventions
 
@@ -40,133 +156,26 @@ Power and current signs are defined so that the energy balance `pv_power + batte
 | Load power | Consumed by loads | N/A (typically) |
 | PV power | Generating | N/A |
 
-**Rule of thumb:** if the measurement represents energy being delivered to the system, it is positive. If it represents energy being absorbed, it is negative.
+**Rule of thumb:** if the measurement represents energy being delivered to the system (from the device), it is positive. If it represents energy being absorbed, it is negative.
 
 For unidirectional measurements where the direction is clear from context (e.g. `power_consumption` for a device that only consumes), positive values representing the natural physical quantity are acceptable.
 
-### Naming Conventions
+## Profile Lifecycle
 
-- All field names use `snake_case`
-- Battery fields use `battery_` prefix
-- Inverter AC fields use `ac_` prefix (DC side is either battery or PV and has its own prefix)
-- PV fields use `pv_` prefix with `s1`/`s2`/etc. for individual strings
-- Grid fields use `grid_` prefix
-- Load fields use `load_` prefix
-- Power meter total fields (`total_power`, `total_current`, `energy_total`) omit the `ac_` prefix because power meters only measure one type of current, so the prefix is redundant. Per-phase fields keep the `ac_` prefix since they follow the same naming as inverter per-phase measurements.
-- Three-phase measurements use `l1`/`l2`/`l3` suffixes (IEC convention)
-- Units follow [UCUM](https://ucum.org/) notation. See the [units introduction](https://v3.developers.enapter.com/docs/units/introduction) and [frequently used units](https://v3.developers.enapter.com/docs/units/frequently-used) for the full reference.
-- Status fields must use a context-appropriate prefix instead of the bare `status` name (e.g. `inverter_status`, `charger_status`, `relay_state`). The bare `status` is a reserved field name in the Enapter platform with [special meaning](https://developers.enapter.com/docs/reference/manifest#device-status) and is intentionally left for the Blueprint developer to expose the native device status. Profiles define a separate prefixed field with a unified set of operational states (e.g. `off`, `operating`, `fault`) so that UIs and automation can treat all devices of the same type consistently, while the native status remains available for device-specific diagnostics.
+Published profiles are immutable. Once a profile is published (non-draft), its YAML cannot change. This guarantees that existing Blueprints on deployed Gateways never become invalid.
 
-### Unit Conventions
-
-Some physical quantities appear in different units across device types. There are two ways to handle this, depending on whether the units are interchangeable:
-
-- **Separate profiles per unit**: when units measure different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively; consumers must handle both explicitly. See `lib.energy.battery.energy` (Wh) and `lib.energy.battery.charge` (Ah) as an example.
-- **Single canonical unit with required conversion**: when the same quantity can be meaningfully expressed in either unit and one is clearly more appropriate. Blueprint authors must convert to the canonical unit. See `lib.energy.battery.limits` (W, with a documented formula for devices that only report in A) as an example.
-
-## Versioning
-
-Profiles use **append-only immutability with composition-based extension**:
-
-- **Published profiles are immutable.** Once a profile is published (non-draft), its YAML cannot change. This guarantees that existing Blueprints on deployed Gateways never become invalid.
-- **No field removal.** If a profile needs incompatible changes, create a new profile version (e.g. `energy.battery_v2`) that implements the old one plus new library components.
+- **No field removal.** If a profile needs incompatible changes, create a new profile version (e.g. `energy.battery.v2`) that implements the old one plus new library components.
 - **Field addition via composition.** New capabilities are added by creating new library components and composing them into a new device profile that `implements` the previous version.
-- **Draft mode.** Profiles start as drafts and can be iterated freely. Once promoted to non-draft, they become immutable. A non-draft profile cannot implement a draft profile, preventing unstable dependencies from leaking into production.
+- **Draft mode.** Profiles start as drafts (`draft: true`) and can be iterated freely. A draft profile can receive breaking changes, so it should not be used in production systems. Once promoted to non-draft, it becomes immutable. A non-draft profile cannot implement a draft profile, preventing unstable dependencies from leaking into production.
 
-In practice, keeping profiles minimal reduces the need for breaking changes. When extension is needed, the composition model allows new profiles to build on existing ones without invalidating older Blueprints.
+In practice, keeping profiles minimal reduces the need for breaking changes. When extension is needed, the composition model lets new profiles build on existing ones without invalidating older Blueprints.
 
-## Development
+## Contributing
 
-### Device Profile
+If a profile for your device or capability doesn't exist, raise an issue in this repository or submit a pull request.
 
-To create a new device implementation for a specific device:
+When contributing:
 
-1. Identify all the capabilities your device needs
-2. Find the corresponding library components in the `/lib` directory or create new ones following the existing structure (see library components section below)
-3. Create a new subdirectory for your device type if it doesn't exist
-4. Create a new YAML file with:
-   - Profile name and description
-   - List of implemented library components using the `implements` field
-5. Submit a pull request to this repository with your proposed device profile
-
-#### Best Practices
-
-1. Profile Name and Description
-    - Use a descriptive name that reflects the device type.
-    - Provide a brief description of the device and its expected capabilities.
-
-1. Keep it Minimal and Universal
-    - Only include the necessary library components that are relevant to the majority of devices of that type.
-    - Avoid including vendor-specific or device-specific capabilities in the base profile.
-    - If a capability is optional or not universally available, consider creating a separate library component for it, but don't include it in the base profile.
-
-#### Example
-
-A hybrid inverter implementation includes:
-
-- Device nameplate information like vendor, model, and serial number
-- Electrical battery management like voltage, current, and power
-- Total inverter power production
-- PV power generation
-
-```yaml
-blueprint_spec: profile/1.0
-
-display_name: Custom Hybrid Inverter
-description: Hybrid inverter combining PV power generation and battery storage
-
-implements:
-  - lib.device.nameplate
-  - lib.energy.battery.electrical
-  - lib.energy.inverter.total
-  - lib.energy.pv.power
-```
-
-### Library Components
-
-To create a new library component for a specific capability:
-
-1. Identify a specific capability or capabilities family that can be reused across multiple devices of a particular type
-2. Create a new subdirectory structure that reflects the capability hierarchy
-3. Create a new YAML file or files with:
-   - Profile component name and description
-   - List of properties and/or telemetry attributes
-4. Submit a pull request to this repository with your proposed library components
-
-#### Best Practices
-
-1. Follow Industry Standards
-    - Use consistent naming conventions for properties and telemetry attributes that follow industry standard terminology and practices.
-    - Research established standards like [SunSpec](https://sunspec.org/) for inspiration.
-
-1. Focused and Modular Design
-    - Create small, focused library components that can be easily combined to create complete device profiles.
-    - Each component should serve a single purpose and be reusable across different device models.
-    - Avoid creating components that are too specific to a single device or vendor.
-    - Ensure that components are not overlapping in functionality.
-
-1. Use Proper Units of Measurement
-    - Include units of measurement for all properties and telemetry attributes using [UCUM](https://ucum.org/) standard notation.
-    - When there are different options for the same property (e.g. `Wh` and `Ah`), use the most common one used in the industry. Please, specify your choice in the description, provide a conversion recommendations and formula if needed, and add a note and reasoning about the chosen unit in the Pull Request description.
-
-#### Example
-
-A library component that implements a battery state of health (SoH) metric:
-
-- State of Health (SoH) is a common metric for batteries that indicates the overall health and capacity of the battery.
-- Not all battery inverters and battery management systems provide this metric, so it's a good candidate for a separate library component that is not included in the base battery profile.
-- SoH is typically represented as a percentage value, so the unit is specified as `%` which is a valid UCUM unit of measurement.
-
-```yaml
-blueprint_spec: profile/1.0
-
-display_name: Battery State of Health
-description: Implements the state of health for a battery.
-
-telemetry:
-  battery_soh:
-    display_name: State of Health
-    type: float
-    unit: "%"
-    description: Battery state of health percentage.
-```
+- Start new profiles as drafts (`draft: true`).
+- Follow the naming, unit, and status conventions documented above.
+- Describe your design choices (e.g. unit selection, naming rationale) in the PR description.

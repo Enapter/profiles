@@ -1,37 +1,56 @@
 blueprint_spec: profile/1.0
 
 display_name: Inverter Status
-description: Status profile for battery/solar/hybrid inverters.
+description: Operational status for battery, solar, and hybrid inverters.
 
 telemetry:
   inverter_status:
-    display_name: Status
+    display_name: Inverter Status
     type: string
-    description: Current operational status of the inverter
+    description: Current operational status of the inverter.
     enum:
-      "off":
-        display_name: "Off"
-        description: Inverter is switched off
+      idle:
+        display_name: Idle
+        description: >
+          Inverter is powered and ready to operate but is not converting power.
+          It will not start until commanded by a user or a rule.
       standby:
         display_name: Standby
-        description: |
-          Inverter is in standby mode waiting for startup conditions.
-          Examples:
-          - AC grid voltage unavailable for grid-tied inverters
-          - DC voltage too low (night time for PV inverters)
-          - External control signal forcing standby
+        description: >
+          Inverter is not converting power but will autonomously resume
+          operation when conditions are met. No command is required.
+          Examples: DC voltage too low (night time for PV inverters),
+          AC grid voltage unavailable for grid-tied inverters.
       starting:
         display_name: Starting
-        description: Inverter is going through startup procedure
+        description: >
+          Inverter is executing its startup sequence. This includes
+          grid synchronization, self-tests, and ramp-up. Power conversion
+          has not yet reached nominal operation.
       operating:
         display_name: Operating
-        description: Inverter is actively producing power
+        description: >
+          Inverter is actively converting power at its operating setpoint.
       throttled:
         display_name: Throttled
-        description: Inverter is operating at reduced power output due to external conditions such as high temperature, grid requirements, or power limits.
-      shutting_down:
-        display_name: Shutting Down
-        description: Inverter is going through shutdown procedure
+        description: >
+          Inverter is operating at reduced power output due to an external
+          constraint or internal condition such as high temperature, grid
+          frequency response, or power curtailment.
+      stopping:
+        display_name: Stopping
+        description: >
+          Inverter is executing a controlled stop sequence, including grid
+          disconnection and ramp-down. It will reach idle or standby when
+          the sequence completes.
       fault:
         display_name: Fault
-        description: Inverter has detected a fault and is not operating
+        description: >
+          Inverter has detected a condition that prevents normal operation.
+          Operator attention is required before the device can resume.
+      maintenance:
+        display_name: Maintenance
+        description: >
+          Inverter is in a maintenance or configuration mode. Normal
+          operation has been suspended by an operator and will not resume
+          until the operator exits this mode.

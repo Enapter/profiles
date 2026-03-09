@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Battery/BMS Profile
+display_name: Battery/BMS
 description: A profile for battery systems and battery management systems (BMS). Covers state of charge, charge/discharge power and current, and nameplate attributes. Suitable for standalone battery banks and integrated BESS units.
 
 implements:

@@ -5,6 +5,7 @@ description: A profile for single-phase hybrid inverters with integrated PV inpu
 
 implements:
   - lib.device.nameplate
+  - lib.energy.battery.charge_status
   - lib.energy.battery.electrical
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc

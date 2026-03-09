@@ -1,0 +1,28 @@
+blueprint_spec: profile/1.0
+
+display_name: Battery Charge Status
+description: Charge direction and mode for battery systems.
+
+telemetry:
+  battery_charge_status:
+    display_name: Battery Charge Status
+    type: string
+    description: Current charge direction or mode of the battery.
+    enum:
+      idle:
+        display_name: Idle
+        description: >
+          Battery is not charging or discharging. No current is flowing.
+      charging:
+        display_name: Charging
+        description: >
+          Battery is actively absorbing energy from the connected source.
+      discharging:
+        display_name: Discharging
+        description: >
+          Battery is actively delivering energy to the connected load.
+      float:
+        display_name: Float
+        description: >
+          Battery is fully charged and receiving trickle current to
+          maintain full state of charge.

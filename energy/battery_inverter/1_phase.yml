@@ -5,6 +5,7 @@ description: A profile for single-phase battery inverters (off-grid and grid-tie
 
 implements:
   - lib.device.nameplate
+  - lib.energy.battery.charge_status
   - lib.energy.battery.electrical
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc

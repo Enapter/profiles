@@ -5,6 +5,7 @@ description: A profile for solar charge controllers (MPPT and PWM). Covers PV in
 
 implements:
   - lib.device.nameplate
+  - lib.energy.battery.charge_status
   - lib.energy.battery.electrical
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc

@@ -10,7 +10,7 @@ telemetry:
     enum:
       disconnected:
         display_name: Disconnected
-        description: Grid is actively disconnected due to intentional island/off-grid mode.
+        description: Inverter is not connected to the grid. This includes off-grid or island mode, pre-synchronization, or operator-initiated disconnection.
       connected:
         display_name: Connected
         description: Operating in grid-connected mode, grid connection is active.

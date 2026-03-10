@@ -8,4 +8,4 @@ telemetry:
     display_name: Daily Energy
     type: float
     unit: Wh
-    description: Energy consumed by loads since the start of the current day.
+    description: Energy consumed by loads since the start of the current day. Day boundary is determined by the timezone configured on the device.

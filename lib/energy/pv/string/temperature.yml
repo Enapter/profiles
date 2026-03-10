@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: PV String Temperature
+description: Temperature measurement for a single PV MPPT string.
+
+telemetry:
+  pv_string_temperature:
+    display_name: PV String Temperature
+    type: float
+    unit: Cel
+    description: Temperature of the solar panel string.

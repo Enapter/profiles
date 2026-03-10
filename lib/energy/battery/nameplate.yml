@@ -5,7 +5,7 @@ description: Battery nameplate attributes for battery inverters, charge controll
 
 properties:
   # NOTE: Proper implementation is strongly recommended.
-  # It is used by lib.energy.battery.charge and lib.energy.battery.limits to convert
+  # It is used by lib.energy.battery.charge.lifetime and lib.energy.battery.limits to convert
   # Ah -> Wh and A -> W respectively. Leaving it unset breaks those conversions.
   # Consumers of those profiles should handle the case when this property is not set.
   battery_nominal_voltage:
@@ -19,7 +19,7 @@ properties:
   battery_nameplate_capacity:
     display_name: Battery Nameplate Capacity
     description: Nameplate energy capacity of connected batteries according to manufacturer specifications.
-    type: float
+    type: integer
     unit: Wh
 
   battery_type:

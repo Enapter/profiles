@@ -10,8 +10,8 @@ description: |
   Ah and Wh are not interchangeable: Ah measures charge (coulombs), Wh measures energy
   (joules). To convert, use battery_nominal_voltage from lib.energy.battery.nameplate:
 
-    battery_charged_energy_lifetime = battery_charge_in_lifetime * battery_nominal_voltage
-    battery_discharged_energy_lifetime = battery_charge_out_lifetime * battery_nominal_voltage
+    battery_energy_in_lifetime = battery_charge_in_lifetime * battery_nominal_voltage
+    battery_energy_out_lifetime = battery_charge_out_lifetime * battery_nominal_voltage
 
   Approximation error: below 3% for LFP, up to ~12% for lead-acid.
 

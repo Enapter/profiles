@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: AC Daily Energy
+description: AC energy production since the start of the current day.
+
+telemetry:
+  ac_energy_daily:
+    display_name: AC Daily Energy
+    type: float
+    unit: Wh
+    description: Energy produced (converted from DC to AC) since the start of the current day.

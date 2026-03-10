@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Three Phase Inverter
+display_name: Three-Phase Inverter
 description: Provides AC measurements for a three-phase inverter.
 
 telemetry:

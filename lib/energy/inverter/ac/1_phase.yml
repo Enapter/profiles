@@ -1,6 +1,6 @@
 blueprint_spec: profile/1.0
 
-display_name: Single Phase Inverter
+display_name: Single-Phase Inverter
 description: Provides AC measurements for a single-phase inverter.
 
 telemetry:
@@ -11,19 +11,19 @@ telemetry:
     description: AC output frequency.
 
   ac_l1_power:
-    display_name: AC Power
+    display_name: L1 Power
     type: float
     unit: W
     description: AC power on phase L1.
 
   ac_l1_voltage:
-    display_name: AC Voltage
+    display_name: L1 Voltage
     type: float
     unit: V
     description: Voltage on phase L1 to neutral.
 
   ac_l1_current:
-    display_name: AC Current
+    display_name: L1 Current
     type: float
     unit: A
     description: Current on phase L1.

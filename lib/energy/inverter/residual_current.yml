@@ -4,7 +4,7 @@ display_name: Inverter Residual Current
 description: Residual current monitoring for inverter ground fault detection.
 
 telemetry:
-  residual_current:
+  inverter_residual_current:
     display_name: Residual Current
     type: float
     unit: mA

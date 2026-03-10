@@ -142,7 +142,7 @@ Units follow [UCUM](https://ucum.org/) notation. See the [units introduction](ht
 Some physical quantities appear in different units across device types. There are two ways to handle this:
 
 - **Single canonical unit with required conversion** (preferred): when the same quantity can be meaningfully expressed in either unit and one is clearly more appropriate. Blueprint authors must convert to the canonical unit. See `lib.energy.battery.limits` (W, with a documented formula for devices that only report in A) as an example.
-- **Separate profiles per unit**: when units measure fundamentally different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively. See `lib.energy.battery.energy` (Wh) and `lib.energy.battery.charge` (Ah) as an example. Avoid this approach when possible -- it forces every consumer (UI, automation, Rule Engine) to handle both variants, increasing complexity. Use it only when there is a clear technical reason why a single canonical unit would not work.
+- **Separate profiles per unit**: when units measure fundamentally different physical quantities and silent conversion would hide precision loss. Blueprint authors implement whichever profile their device supports natively. See `lib.energy.battery.energy.lifetime` (Wh) and `lib.energy.battery.charge.lifetime` (Ah) as an example. Avoid this approach when possible -- it forces every consumer (UI, automation, Rule Engine) to handle both variants, increasing complexity. Use it only when there is a clear technical reason why a single canonical unit would not work.
 
 ### Sign Conventions
 

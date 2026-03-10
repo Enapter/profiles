@@ -4,10 +4,10 @@ display_name: Battery Cumulative Energy Statistics
 description: |
   Cumulative energy in Wh. Use for battery inverters, hybrid inverters, and AC-coupled systems.
 
-  If the device meters in ampere-hours, use lib.energy.battery.charge instead. Do not
+  If the device meters in ampere-hours, use lib.energy.battery.charge.lifetime instead. Do not
   convert Ah to Wh silently; consumers need to know what unit they are working with.
 
-  Automation: prefer Wh. For devices implementing lib.energy.battery.charge instead,
+  Automation: prefer Wh. For devices implementing lib.energy.battery.charge.lifetime instead,
   convert explicitly using battery_nominal_voltage from lib.energy.battery.nameplate:
 
     battery_energy_in_lifetime = battery_charge_in_lifetime * battery_nominal_voltage
@@ -15,7 +15,7 @@ description: |
 
   Approximation error: below 3% for LFP, up to ~12% for lead-acid.
 
-  UI: prefer Wh, fall back to Ah from lib.energy.battery.charge.
+  UI: prefer Wh, fall back to Ah from lib.energy.battery.charge.lifetime.
 
 telemetry:
   battery_energy_in_lifetime:

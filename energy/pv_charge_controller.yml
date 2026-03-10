@@ -1,7 +1,7 @@
 blueprint_spec: profile/1.0
 
 display_name: PV Charge Controller
-description: A profile for solar charge controllers (MPPT and PWM). Covers PV input power, battery state of charge, charge/discharge current, and battery nameplate attributes.
+description: A profile for solar charge controllers (MPPT and PWM). Covers PV input power, battery state of charge, charge/discharge current, battery nameplate attributes, and operational status.
 
 implements:
   - lib.device.nameplate
@@ -9,4 +9,5 @@ implements:
   - lib.energy.battery.electrical
   - lib.energy.battery.nameplate
   - lib.energy.battery.soc
+  - lib.energy.charge_controller.status
   - lib.energy.pv.power

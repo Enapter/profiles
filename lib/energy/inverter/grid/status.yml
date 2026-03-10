@@ -7,6 +7,7 @@ telemetry:
   grid_status:
     display_name: Grid Connection Status
     type: string
+    description: Current grid connection state of the inverter.
     enum:
       disconnected:
         display_name: Disconnected

@@ -1,11 +1,11 @@
 blueprint_spec: profile/1.0
 
-display_name: Inverter Energy Statistics - Total
+display_name: Inverter Lifetime Energy
 description: Cumulative AC energy production since installation.
 
 telemetry:
-  ac_energy_total:
-    display_name: Total AC Energy Produced
+  ac_energy_lifetime:
+    display_name: AC Lifetime Energy
     type: float
     unit: Wh
     description: Cumulative energy produced (converted from DC to AC) since installation.

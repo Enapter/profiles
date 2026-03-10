@@ -121,7 +121,7 @@ Domain-specific prefixes group related measurements:
 |---|---|
 | `ac_` | Inverter AC side (DC side is either battery or PV and has its own prefix) |
 | `battery_` | Battery fields |
-| `pv_` | PV fields, with `s1`/`s2`/etc. for individual strings |
+| `pv_` | PV fields |
 | `grid_` | Grid fields |
 | `load_` | Load fields |
 

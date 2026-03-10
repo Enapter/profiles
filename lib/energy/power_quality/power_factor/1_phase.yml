@@ -19,7 +19,7 @@ telemetry:
   ac_l1_power_factor:
     display_name: Power Factor
     type: float
-    unit: 1
+    unit: "1"
     description: |
       Ratio of active power to apparent power, range from -1 to 1.
       Positive values indicate lagging (inductive) power factor.

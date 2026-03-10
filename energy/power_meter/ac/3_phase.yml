@@ -6,5 +6,5 @@ description: A profile for three-phase AC power meters. Covers per-phase and tot
 implements:
   - lib.device.nameplate
   - lib.energy.power_meter.ac.3_phase
-  - lib.energy.power_meter.energy.total
+  - lib.energy.power_meter.energy.lifetime
   - lib.energy.power_meter.power

@@ -10,22 +10,22 @@ description: |
   Automation: prefer Wh. For devices implementing lib.energy.battery.charge instead,
   convert explicitly using battery_nominal_voltage from lib.energy.battery.nameplate:
 
-    battery_charged_energy_total = battery_charge_in_total * battery_nominal_voltage
-    battery_discharged_energy_total = battery_charge_out_total * battery_nominal_voltage
+    battery_charged_energy_lifetime = battery_charge_in_lifetime * battery_nominal_voltage
+    battery_discharged_energy_lifetime = battery_charge_out_lifetime * battery_nominal_voltage
 
   Approximation error: below 3% for LFP, up to ~12% for lead-acid.
 
   UI: prefer Wh, fall back to Ah from lib.energy.battery.charge.
 
 telemetry:
-  battery_charged_energy_total:
-    display_name: Total Energy Charged
+  battery_charged_energy_lifetime:
+    display_name: Lifetime Energy Charged
     type: float
     unit: Wh
     description: Cumulative energy charged to batteries since installation.
 
-  battery_discharged_energy_total:
-    display_name: Total Energy Discharged
+  battery_discharged_energy_lifetime:
+    display_name: Lifetime Energy Discharged
     type: float
     unit: Wh
     description: Cumulative energy discharged from batteries since installation.

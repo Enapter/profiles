@@ -6,6 +6,10 @@ description: >
   systems. Inverter-based devices (battery inverters, hybrid inverters) use
   inverter_status instead.
 
+# NOTE: The backbone status `stopping` is intentionally omitted. Unlike energy
+# conversion devices, a BMS does not have a controlled multi-step shutdown
+# sequence observable over the communication interface. Contactor state
+# transitions are near-instantaneous from the telemetry perspective.
 telemetry:
   battery_status:
     display_name: Battery Status

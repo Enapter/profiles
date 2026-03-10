@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Daily Energy
+description: Energy consumption since the start of the current day.
+
+telemetry:
+  energy_daily:
+    display_name: Daily Energy
+    type: float
+    unit: Wh
+    description: Energy consumed by loads since the start of the current day.

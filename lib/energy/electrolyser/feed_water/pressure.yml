@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Feed Water Pressure
+description: Feed water pressure measurement for electrolyser systems.
+
+telemetry:
+  feed_water_pressure:
+    display_name: Feed Water Pressure
+    type: float
+    unit: bar{gauge}
+    description: >-
+      Pressure of the feed water supply at the electrolyser inlet,
+      measured as gauge pressure relative to atmospheric.

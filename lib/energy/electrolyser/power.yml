@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser Power
+description: Total electrical power consumption of the electrolyser.
+
+telemetry:
+  power_consumption:
+    display_name: Power Consumption
+    type: float
+    unit: W
+    description: Total electrical power consumed by the electrolyser.

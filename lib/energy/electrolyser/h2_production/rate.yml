@@ -1,0 +1,30 @@
+blueprint_spec: profile/1.0
+
+display_name: Electrolyser H2 Production Rate
+description: >-
+  Hydrogen production rate and setpoint for electrolyser systems.
+  Percentage values are relative to the nominal production capacity.
+  The absolute output rate is reported in normal liters per hour (Nl/h)
+  at standard conditions (0 deg C, 1 atm). To convert to kg/h,
+  divide by approximately 11126 (1 kg H2 = 11126 Nl).
+
+telemetry:
+  h2_production_rate:
+    display_name: H2 Production Rate
+    type: float
+    unit: "%"
+    description: Current hydrogen production rate as a percentage of nominal capacity.
+
+  h2_production_setpoint:
+    display_name: H2 Production Setpoint
+    type: float
+    unit: "%"
+    description: Commanded hydrogen production rate as a percentage of nominal capacity.
+
+  h2_output_rate:
+    display_name: H2 Output Rate
+    type: float
+    unit: Nl/h
+    description: >-
+      Current hydrogen output flow rate at standard conditions.
+      To convert to kg/h, divide by approximately 11126.

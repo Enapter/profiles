@@ -1,0 +1,15 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell H2 Inlet Pressure
+description: Hydrogen gas pressure at the fuel cell inlet.
+
+telemetry:
+  h2_inlet_pressure:
+    display_name: H2 Inlet Pressure
+    type: float
+    unit: mbar
+    description: >-
+      Hydrogen gas pressure at the fuel cell inlet,
+      measured as gauge pressure relative to atmospheric.
+      Fuel cell anode pressures are typically in the hundreds
+      of millibar range.

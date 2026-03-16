@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Output Current Limit
+description: >-
+  Maximum output current permitted by the fuel cell. Limits the
+  DC-DC converter output to protect the stack and downstream equipment.
+
+telemetry:
+  output_current_limit:
+    display_name: Output Current Limit
+    type: float
+    unit: A
+    description: Maximum DC output current permitted by the fuel cell.

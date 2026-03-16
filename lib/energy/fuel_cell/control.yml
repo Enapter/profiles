@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Control
+description: Commands for controlling fuel cell power generation.
+
+commands:
+  start:
+    display_name: Start
+    description: Start the fuel cell system.
+
+  stop:
+    display_name: Stop
+    description: Stop the fuel cell system with a controlled shutdown.

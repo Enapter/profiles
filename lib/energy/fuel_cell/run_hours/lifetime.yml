@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Run Hours Lifetime
+description: Cumulative hours the fuel cell has spent actively generating power.
+
+telemetry:
+  run_hours_lifetime:
+    display_name: Run Hours Lifetime
+    type: float
+    unit: h
+    description: >-
+      Cumulative hours the fuel cell has spent actively
+      generating power.

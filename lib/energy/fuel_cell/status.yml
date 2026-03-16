@@ -1,0 +1,58 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Status
+description: >-
+  Operational status for fuel cell systems. Uses the standard status
+  framework backbone with fuel cell-specific active status and the
+  approved derated status for reduced-output operation.
+
+telemetry:
+  fuel_cell_status:
+    display_name: Fuel Cell Status
+    type: string
+    description: Current operational status of the fuel cell.
+    enum:
+      idle:
+        display_name: Idle
+        description: >-
+          Powered on and ready to start. No active power generation or
+          transitional process in progress.
+      starting:
+        display_name: Starting
+        description: >-
+          Startup sequence in progress. May include gas line purging,
+          pressurization, and temperature ramp phases before power
+          generation begins.
+      running:
+        display_name: Running
+        description: Actively generating electrical power.
+      stopping:
+        display_name: Stopping
+        description: >-
+          Controlled shutdown in progress. May include cooldown,
+          gas purging, and depressurization phases.
+      standby:
+        display_name: Standby
+        description: >-
+          Power generation automatically paused due to process
+          conditions such as low hydrogen supply pressure or battery
+          voltage threshold. Will resume autonomously when conditions
+          allow.
+      derated:
+        display_name: Derated
+        description: >-
+          Generating at reduced output due to stack degradation,
+          hydrogen supply limitations, or temperature constraints.
+          The fuel cell is operational but cannot deliver full rated
+          power.
+      fault:
+        display_name: Fault
+        description: >-
+          A condition prevents normal operation. Operator intervention
+          or an automated reset is required before the fuel cell
+          can return to service.
+      maintenance:
+        display_name: Maintenance
+        description: >-
+          Operator-initiated service mode. The fuel cell is intentionally
+          taken out of normal operation for inspection or servicing.

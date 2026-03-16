@@ -1,0 +1,11 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell Energy Generated Lifetime
+description: Cumulative electrical energy generated since installation.
+
+telemetry:
+  energy_generated_lifetime:
+    display_name: Energy Generated Lifetime
+    type: float
+    unit: Wh
+    description: Cumulative electrical energy generated since installation.

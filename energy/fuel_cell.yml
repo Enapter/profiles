@@ -1,0 +1,13 @@
+blueprint_spec: profile/1.0
+
+display_name: Fuel Cell
+description: >-
+  Fuel cell system with power output, hydrogen supply monitoring,
+  control commands, and operational status.
+
+implements:
+  - lib.device.nameplate
+  - lib.energy.fuel_cell.status
+  - lib.energy.fuel_cell.control
+  - lib.energy.fuel_cell.output.electrical
+  - lib.energy.fuel_cell.h2_inlet_pressure

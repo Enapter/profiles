@@ -1,0 +1,33 @@
+name: Validate Profiles
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build profiles archive
+        run: bash make_profiles_archive.sh profiles.zip
+
+      - name: Validate profiles
+        run: |
+          response=$(curl -sf -w "\n%{http_code}" \
+            -X POST https://api.enapter.com/v3/blueprints/device_profiles/validate \
+            -H "Content-Type: application/zip" \
+            --data-binary @profiles.zip)
+          body=$(echo "$response" | head -n -1 | jq .)
+          status=$(echo "$response" | tail -n 1)
+          echo "$body"
+          if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+            echo "Validation failed with HTTP $status"
+            exit 1
+          fi
+          if [ "$(echo "$body" | jq '.validation_errors | length')" -gt 0 ]; then
+            exit 1
+          fi

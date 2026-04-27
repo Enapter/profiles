@@ -6,6 +6,8 @@ A **profile** is a YAML file that declares the interface of a device for the res
 
 Standardizing device interfaces through profiles enables integration with different parts of the Enapter platform (REST, MQTT, OPC UA, Rule Engine) and ensures interoperability across different device vendors and models.
 
+> **[Browse the full profile reference](docs/index.md)** — every profile and library component with all fields, types, units, and allowed values.
+
 ## Key Concepts
 
 ### Profile References
@@ -22,6 +24,7 @@ When a blueprint or profile lists other profiles in its [`implements`](https://v
 lib/          Reusable building blocks that define specific capabilities
 energy/       Device profiles for energy devices (inverters, batteries, power meters)
 sensor/       Device profiles for sensor devices (temperature, gas, irradiance)
+docs/         Generated reference documentation for all profiles and library components
 guides/       Reference documentation for profile authors
 ```
 

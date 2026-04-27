@@ -1,0 +1,24 @@
+# Battery Status
+
+Operational status for standalone battery systems and battery management systems. Inverter-based devices (battery inverters, hybrid inverters) use inverter_status instead.
+
+## Telemetry
+
+### `battery_status`
+
+- **Display name:** Battery Status
+- **Type:** `string`
+
+Current operational status of the battery.
+
+**Values:**
+
+| Value | Name | Description |
+|-------|------|-------------|
+| `idle` | Idle | Battery is powered and ready to operate but is not connected. It will not start until commanded by a user. |
+| `standby` | Standby | Battery has entered a low-power sleep mode after an extended period of inactivity. It will wake up autonomously when needed, but the transition back to connected may not be instantaneous. |
+| `starting` | Starting | Battery is initializing and not yet available for charging or discharging. This covers contactor pre-charge, string SoC balancing, and other steps required before the battery can accept power commands. |
+| `connected` | Connected | Battery is connected and available for charging or discharging. The actual charge direction is reported in battery_charge_status. |
+| `fault` | Fault | Battery has detected a condition that prevents normal operation. Operator attention is required before the device can resume. |
+| `maintenance` | Maintenance | Battery is in a maintenance or configuration mode. Normal operation has been suspended by an operator and will not resume until the operator exits this mode. |
+
